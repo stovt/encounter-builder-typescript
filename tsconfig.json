@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "jsx": "react",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "rootDirs": ["src", "stories"],
     "baseUrl": ".",
     "strict": true,
