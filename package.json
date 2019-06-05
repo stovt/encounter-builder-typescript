@@ -1,0 +1,65 @@
+{
+  "name": "encounter-builder-typescript",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://sergeytovt.github.io/encounter-builder",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel ./public/index.html -p 3000 --open",
+    "prebuild": "rimraf dist/",
+    "build": "cross-env NODE_ENV=production parcel build ./public/index.html",
+    "prettify": "prettier --write './src/**/*.{ts,tsx}'",
+    "lint": "yarn lint:js && yarn lint:styles",
+    "lint:js": "eslint './src/**/*.{ts,tsx}'",
+    "lint:styles": "stylelint './src/**/*.{ts,tsx}'",
+    "lint:fix": "yarn lint:js --fix",
+    "type-check": "tsc --noEmit",
+    "cache:clear": "rimraf .cache",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
+    "parse-monsters": "node scripts/parseMonsters.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn type-check && && yarn lint-staged"
+    }
+  },
+  "dependencies": {
+    "core-js": "^3.1.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-router-dom": "^5.0.1",
+    "react-select": "2.4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@types/node": "^12.0.4",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "@types/react-select": "^2.0.19",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "babel-preset-nano-react-app": "^0.1.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.5.1"
+  },
+  "alias": {
+    "public": "./public",
+    "styles": "./src/styles",
+    "config": "./src/config",
+    "shared": "./src/shared"
+  }
+}
