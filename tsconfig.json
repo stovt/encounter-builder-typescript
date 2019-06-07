@@ -14,9 +14,13 @@
     "strict": true,
     "paths": {
       "public/*": ["public/*"],
+      "pages/*": ["src/pages/*"],
+      "store/*": ["src/store/*"],
       "styles": ["src/styles"],
+      "styles/*": ["src/styles/*"],
       "config": ["src/config"],
-      "shared/*": ["src/shared/*"]
+      "shared/*": ["src/shared/*"],
+      "react-portal-tooltip": ["src/modules.d.ts"]
     }
   },
   "include": ["./src/**/*"]

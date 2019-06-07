@@ -34,15 +34,25 @@ const OPTIONS = {
 const fetchMonsterByID = monsterID =>
   fetch(`${API_CORS_ENDPOINT}${API_ENDPOINT}/monsters/${monsterID}`, OPTIONS)
     .then(result => result.json())
-    .then(monster => {
-      fs.writeFile(publicPath(`data/monsters/${monsterID}.json`), JSON.stringify(monster), err => {
-        if (err) {
-          console.log(err);
-          console.error(`Error writing ${monsterID}.json file.`);
-        } else {
-          console.log(`Monster ${monster.name} successfully parsed!`);
+    .then(({ slug, type, ...monster }) => {
+      const normalizedMonster = {
+        ...monster,
+        id: slug,
+        type: type.startsWith('swarm') ? 'swarm' : type
+      };
+
+      fs.writeFile(
+        publicPath(`data/monsters/${monsterID}.json`),
+        JSON.stringify(normalizedMonster),
+        err => {
+          if (err) {
+            console.log(err);
+            console.error(`Error writing ${monsterID}.json file.`);
+          } else {
+            console.log(`Monster ${normalizedMonster.name} successfully parsed!`);
+          }
         }
-      });
+      );
     })
     .catch(err => {
       console.error(err);
@@ -59,7 +69,16 @@ const getMonsters = (nextPageUrl = '', monsters = []) => {
       if (data.next) {
         return getMonsters(data.next, allMonsters);
       }
-      return Promise.resolve(allMonsters);
+      return Promise.resolve(
+        allMonsters.map(monster => ({
+          id: monster.slug,
+          name: monster.name,
+          type: monster.type.startsWith('swarm') ? 'swarm' : monster.type,
+          challenge_rating: monster.challenge_rating,
+          size: monster.size,
+          hit_points: monster.hit_points
+        }))
+      );
     })
     .catch(err => {
       console.error(err);
@@ -77,5 +96,5 @@ getMonsters().then(monsters => {
     }
   });
 
-  monsters.forEach(monster => fetchMonsterByID(monster.slug));
+  monsters.forEach(monster => fetchMonsterByID(monster.id));
 });

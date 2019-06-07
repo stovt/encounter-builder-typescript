@@ -1,0 +1,124 @@
+.ReactTable .rt-thead {
+  font-weight: bold;
+}
+
+.ReactTable .rt-thead.-headerGroups {
+  border-bottom: 1px solid #ddd;
+}
+
+.ReactTable .rt-thead.-filters {
+  border-bottom: 1px solid #ddd;
+}
+
+.ReactTable .rt-thead.-filters input,
+.ReactTable .rt-thead.-filters select {
+  height: 34px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fff;
+  line-height: 34px;
+  padding: 0 15px;
+  border: 1px solid #dde3e8;
+  outline: none;
+}
+
+.ReactTable .rt-thead.-filters input:focus,
+.ReactTable .rt-thead.-filters select:focus {
+  box-shadow: 0 4px 16px 0 rgba(25, 122, 173, .5);
+  border: solid 1px #197aad
+}
+
+.ReactTable .rt-thead.-filters .rt-th {
+  border-right: 1px solid #ddd;
+}
+
+.ReactTable .rt-thead.-header {
+	box-shadow: none;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.ReactTable .rt-thead .rt-th,
+.ReactTable .rt-thead .rt-td {
+  border-right: 1px solid #ddd;
+}
+
+.ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
+	background: '#e4e4e4';
+}
+
+.ReactTable .rt-tbody .rt-tr-group {
+  border-bottom: solid 1px #ddd;
+  cursor: pointer;
+}
+
+.ReactTable .rt-tbody .rt-tr-group:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.ReactTable .rt-tbody .rt-td {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #ddd;
+}
+
+.ReactTable .rt-th,
+.ReactTable .rt-td {
+  white-space: normal;
+  text-overflow: clip;
+}
+
+.ReactTable .rt-tfoot {
+  box-shadow: 0 0 15px 0 #ddd;
+}
+
+.ReactTable .rt-tfoot .rt-td {
+  border-right: 1px solid #ddd;
+}
+
+.ReactTable .-pagination {
+	box-shadow: none;
+  border-top: 1px solid #ddd;
+}
+
+.ReactTable .-pagination input,
+.ReactTable .-pagination select {
+  height: 34px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fff;
+  line-height: 34px;
+  padding: 0 15px;
+  border: 1px solid #dde3e8;
+  outline: none;
+}
+
+.ReactTable .-pagination input:focus,
+.ReactTable .-pagination select:focus {
+  box-shadow: 0 4px 16px 0 rgba(25, 122, 173, .5);
+  border: solid 1px #197aad
+}
+
+.ReactTable .-pagination .-btn {
+  height: 100%;  
+  outline: none;
+  padding: 10px 32px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 8px 0 rgba(60, 18, 6, .16);
+  background: linear-gradient(79deg, #da3319, #eb4930);
+  color: #fff;
+}
+
+.ReactTable .-pagination .-btn[disabled] {
+  opacity: .3;
+}
+
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+  background: linear-gradient(79deg, #da3319, #eb4930);
+  opacity: .8;
+}
+
+.ReactTable .-pagination .-pageJump input {
+  padding-right: 0;
+}

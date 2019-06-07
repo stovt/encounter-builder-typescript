@@ -7,7 +7,7 @@ module.exports =  {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'react-hooks'],
   extends:  [
     'airbnb',
     'plugin:@typescript-eslint/recommended',
@@ -16,7 +16,7 @@ module.exports =  {
   ],
   rules: {
     'indent': 'off',
-    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/indent': ['off'],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
     'react/prop-types': 'off',
@@ -32,7 +32,9 @@ module.exports =  {
     'react/destructuring-assignment': ['off'],
     'react/jsx-one-expression-per-line': ['off'],
     'function-paren-newline': 'off',
-    'react/no-array-index-key': 'off'
+    'react/no-array-index-key': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn'
   },
   env: {
     browser: true,
@@ -49,7 +51,7 @@ module.exports =  {
   ],
   settings: {
     'import/resolver': {
-      "typescript": {},
+      'typescript': {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }

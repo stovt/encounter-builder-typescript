@@ -70,10 +70,8 @@ export interface MonsterSpeed {
 }
 export type MonsterActions = MonsterAction[];
 
-export interface MonsterID {
-  slug: string;
-}
-export interface MonsterRequestBaseWithoutID {
+export interface MonsterBase {
+  id: string;
   name: string;
   type: MonsterType;
   challenge_rating: MonsterCR;
@@ -81,14 +79,9 @@ export interface MonsterRequestBaseWithoutID {
   hit_points: number;
 }
 
-export type MonsterRequestBase = MonsterRequestBaseWithoutID & MonsterID;
-
-export type MonstersRequestBase = MonsterRequestBase[];
-
-export type MonsterBase = MonsterRequestBaseWithoutID & { id: string };
 export type MonstersBase = MonsterBase[];
 
-export interface MonsterRequestWithoutID extends MonsterRequestBaseWithoutID {
+export interface Monster extends MonsterBase {
   subtype: string;
   alignment: string;
   armor_class: number;
@@ -131,17 +124,16 @@ export interface MonsterRequestWithoutID extends MonsterRequestBaseWithoutID {
   actions: MonsterActions;
   legendary_actions: MonsterActions;
 }
-export type MonsterRequest = MonsterRequestWithoutID & MonsterID;
-export type MonstersRequest = MonsterRequest[];
 
-export type Monster = MonsterRequestWithoutID & { id: string };
 export type Monsters = Monster[];
+
+export interface BattleMonster extends Monster {
+  initiative: number;
+  state: MonsterState;
+}
 
 export interface BattleMonsterRow {
   rowID: string;
-  monster: Monster & {
-    initiative: number;
-    state: MonsterState;
-  };
+  monster: BattleMonster;
 }
 export type BattleMonsterRows = BattleMonsterRow[];

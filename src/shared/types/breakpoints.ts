@@ -1,11 +1,6 @@
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
-export interface Breakpoints {
-  xs: boolean;
-  sm: boolean;
-  md: boolean;
-  lg: boolean;
-}
+export type Breakpoints = Record<'xs' | 'sm' | 'md' | 'lg', boolean>;
 
 export interface BreakpointsState {
   breakpoints: Breakpoints;

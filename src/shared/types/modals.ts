@@ -1,6 +1,6 @@
 export interface ModalItem {
   visible: boolean;
-  data: {};
+  data: any;
 }
 
 export type Modals = Record<string, ModalItem>;

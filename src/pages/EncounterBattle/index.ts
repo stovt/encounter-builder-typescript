@@ -1,1 +1,1 @@
-export { default } from './EncounterBattle.component';
+export { default } from './EncounterBattle.container';

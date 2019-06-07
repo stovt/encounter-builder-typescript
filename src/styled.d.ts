@@ -68,6 +68,6 @@ declare module 'styled-components' {
         lg: number;
       };
     };
-    breakpoints: Record<'xs' | 'sm' | 'md' | 'lg', CSSObject>;
+    breakpoints: Record<'xs' | 'sm' | 'md' | 'lg', BaseThemedCssFunction<any>>;
   }
 }

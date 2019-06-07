@@ -1,4 +1,4 @@
-import { css, CSSObject, SimpleInterpolation } from 'styled-components';
+import { css, CSSObject, SimpleInterpolation, BaseThemedCssFunction } from 'styled-components';
 
 export interface Breakpoints {
   xs: number;
@@ -7,7 +7,9 @@ export interface Breakpoints {
   lg: number;
 }
 
-const breakpoints = (sizes: Breakpoints, unit: string): Record<string, CSSObject> => {
+type ReturnType = Record<'xs' | 'sm' | 'md' | 'lg', BaseThemedCssFunction<any>>;
+
+const breakpoints = (sizes: Breakpoints, unit: string): ReturnType => {
   const keys = Object.keys(sizes) as ['xs', 'sm', 'md', 'lg'];
 
   return keys.reduce(
@@ -27,7 +29,7 @@ const breakpoints = (sizes: Breakpoints, unit: string): Record<string, CSSObject
           `
     }),
     {}
-  );
+  ) as ReturnType;
 };
 
 export default breakpoints;
