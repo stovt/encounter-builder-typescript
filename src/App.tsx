@@ -4,13 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import LoadingComponent from 'shared/components/LoadingComponent';
 import MonsterInfoModal from 'shared/components/MonsterInfoModal';
 import { ModalWatcher } from 'shared/components/Modal';
-
-const EncounterBuilder = React.lazy(() =>
-  import(/* webpackChunkName: 'encounterBuilder' */ './pages/EncounterBuilder')
-);
-const EncounterBattle = React.lazy(() =>
-  import(/* webpackChunkName: 'encounterBattle' */ './pages/EncounterBattle')
-);
+import EncounterBuilderPage from 'pages/EncounterBuilder';
+import EncounterBattlePage from 'pages/EncounterBattle';
 
 const App: React.FC = () => (
   <div>
@@ -20,8 +15,8 @@ const App: React.FC = () => (
         <Col xs={12}>
           <React.Suspense fallback={<LoadingComponent />}>
             <Switch>
-              <Route exact path='/' component={EncounterBuilder} />
-              <Route path='/encounter-battle' component={EncounterBattle} />
+              <Route exact path='/' component={EncounterBuilderPage} />
+              <Route path='/encounter-battle' component={EncounterBattlePage} />
             </Switch>
           </React.Suspense>
           <MonsterInfoModal />
