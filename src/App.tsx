@@ -4,9 +4,13 @@ import { Switch, Route } from 'react-router-dom';
 import LoadingComponent from 'shared/components/LoadingComponent';
 import MonsterInfoModal from 'shared/components/MonsterInfoModal';
 import { ModalWatcher } from 'shared/components/Modal';
-import EncounterBuilderPage from 'pages/EncounterBuilder';
-import EncounterBattlePage from 'pages/EncounterBattle';
 
+const EncounterBuilderPage = React.lazy(() =>
+  import(/* webpackChunkName: 'encounterBuilder' */ './pages/EncounterBuilder')
+);
+const EncounterBattlePage = React.lazy(() =>
+  import(/* webpackChunkName: 'encounterBattle' */ './pages/EncounterBattle')
+);
 const App: React.FC = () => (
   <div>
     <ModalWatcher />
