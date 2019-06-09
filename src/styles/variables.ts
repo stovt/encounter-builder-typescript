@@ -3,7 +3,7 @@ import breakpoints from './breakpoints';
 
 const theme: DefaultTheme = {
   fonts: {
-    main: 'Roboto'
+    main: '"Roboto", "Arial"'
   },
   fontSize: {
     body: '14px',
