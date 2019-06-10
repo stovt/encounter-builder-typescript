@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { StyledButton, bigBtnStyles } from 'shared/components/forms';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default styled(StyledButton.withComponent(NavLink))`
+export default styled(StyledButton.withComponent(Link))`
   ${bigBtnStyles}
 `;

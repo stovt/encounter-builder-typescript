@@ -7,8 +7,13 @@ interface Props {
   children: React.ReactElement;
 }
 
+interface Listener {
+  listener: ({ matches }: { matches: boolean }) => void;
+  mql: MediaQueryList;
+}
+
 const BreakpointListener: React.FC<Props> = ({ breakpointChange, children }) => {
-  const listeners = React.useRef<Record<Breakpoint, any> | null>(null);
+  const listeners = React.useRef<Record<Breakpoint, Listener> | null>(null);
 
   React.useEffect(() => {
     listeners.current = fromBreakpoints(breakpoint => {

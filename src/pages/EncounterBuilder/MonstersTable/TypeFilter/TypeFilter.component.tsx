@@ -3,14 +3,14 @@ import { injectIntl, InjectedIntl } from 'react-intl';
 import { TYPES } from '../MonstersTable.constants';
 
 interface Props {
-  onChange: (value: any) => void;
+  onChange: (value: string) => void;
   value: string;
   intl: InjectedIntl;
 }
 
 const TypeFilter: React.FC<Props> = ({ onChange, value, intl: { formatMessage } }) => {
   const handleChange = React.useCallback(
-    e => {
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
       onChange(e.target.value);
     },
     [onChange]

@@ -3,14 +3,14 @@ import { injectIntl, InjectedIntl } from 'react-intl';
 import { SIZES } from '../MonstersTable.constants';
 
 interface Props {
-  onChange: (value: any) => void;
+  onChange: (value: string) => void;
   value: string;
   intl: InjectedIntl;
 }
 
 const SizeFilter: React.FC<Props> = ({ onChange, value, intl: { formatMessage } }) => {
   const handleChange = React.useCallback(
-    e => {
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
       onChange(e.target.value);
     },
     [onChange]

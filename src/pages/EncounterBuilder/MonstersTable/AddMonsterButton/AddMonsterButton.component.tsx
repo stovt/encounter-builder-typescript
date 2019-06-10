@@ -12,7 +12,7 @@ interface Props {
 
 const AddMonsterButton: React.FC<Props> = ({ monsterID, getMonsterById, addMonsterToGroup }) => {
   const handleOnClick = React.useCallback(
-    e => {
+    (e: React.SyntheticEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       addMonsterToGroup(monsterID, getMonsterById(monsterID));
     },

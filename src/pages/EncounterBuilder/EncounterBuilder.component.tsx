@@ -13,7 +13,6 @@ import Totals from './Totals';
 import Legend from './Legend';
 import MonstersTable from './MonstersTable';
 import BattleButton from './BattleButton';
-import { isMonsterLoading } from './EncounterBuilder.selectors';
 
 interface Props {
   monsters: MonstersBase;

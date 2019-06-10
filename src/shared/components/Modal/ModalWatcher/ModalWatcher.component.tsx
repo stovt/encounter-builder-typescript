@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import GlobalStyles from './ModalWatcher.styles';
 import { attachModalStyles, detachModalStyles } from './ModalWatcher.helpers';

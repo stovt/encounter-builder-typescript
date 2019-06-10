@@ -1,4 +1,3 @@
-// @flow
 import { createGlobalStyle } from 'styled-components';
 import { scrollbarWidth } from 'shared/helpers';
 import { MODAL_OPEN_CLASS, HAS_SCROLLBAR_CLASS } from './ModalWatcher.constants';

@@ -10,10 +10,6 @@ interface Props {
   setMonsterHP: (rowID: string, hp: number) => EncounterBattleAction;
 }
 
-interface State {
-  value: Value;
-}
-
 const HPInput: React.FC<Props> = ({ value, rowID, setMonsterHP }) => {
   const [val, setVal] = React.useState<Value>(value);
 
@@ -31,12 +27,12 @@ const HPInput: React.FC<Props> = ({ value, rowID, setMonsterHP }) => {
     [rowID, setMonsterHP]
   );
 
-  const handleOnChange = React.useCallback(e => {
+  const handleOnChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (/^[\s\d()+\-*/.]*$/.test(e.target.value)) setVal(e.target.value);
   }, []);
 
   const handleOnBlur = React.useCallback(
-    e => {
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       try {
         handleSetMonsterHP(handleEval(e.target.value));
       } catch {

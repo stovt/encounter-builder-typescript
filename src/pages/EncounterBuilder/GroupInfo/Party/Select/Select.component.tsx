@@ -11,7 +11,7 @@ interface Props {
 
 const Select: React.FC<Props> = ({ onChange, value, maxValue, id }) => {
   const handleOnChange = React.useCallback(
-    event => {
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
       onChange(Number(event.target.value), id);
     },
     [id, onChange]

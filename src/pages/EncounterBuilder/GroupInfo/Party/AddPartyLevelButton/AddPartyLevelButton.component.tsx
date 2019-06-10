@@ -3,7 +3,11 @@ import { FormattedMessage } from 'react-intl';
 import { IconWrapper, PlusIcon } from 'shared/components/Icons';
 import StyledAddPartyLevelButton from './AddPartyLevelButton.styled';
 
-const AddPartyLevelButton: React.FC<Record<string, any>> = props => (
+interface Props {
+  onClick: () => void;
+}
+
+const AddPartyLevelButton: React.FC<Props> = props => (
   <StyledAddPartyLevelButton type='button' {...props}>
     <IconWrapper>
       <PlusIcon size={12} />

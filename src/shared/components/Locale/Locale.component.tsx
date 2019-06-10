@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE } from './Locale.constants';
 
 addLocaleData([...localeRu]);
 
-const locales: Record<string, any> = { ru };
+const locales: Record<string, {}> = { ru };
 
 const userLanguage =
   (navigator.languages && navigator.languages.length && navigator.languages[0].split('-')[0]) ||
@@ -15,7 +15,7 @@ const userLanguage =
   navigator.userLanguage ||
   DEFAULT_LOCALE;
 
-const locale = (locales[userLanguage] as Record<string, any>) ? userLanguage : DEFAULT_LOCALE;
+const locale = locales[userLanguage] ? userLanguage : DEFAULT_LOCALE;
 
 const messages = flattenMessages(locales[locale]);
 

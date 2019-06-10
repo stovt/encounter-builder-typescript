@@ -15,7 +15,10 @@ export const unregisterModal = (modalId: string): ModalsAction => ({
   type: UNREGISTER_MODAL,
   modalId
 });
-export const showModal = (modalId: string, data: {} = MODAL_DATA_DEFAULT_VALUE): ModalsAction => ({
+export const showModal = (
+  modalId: string,
+  data: { [key: string]: any } = MODAL_DATA_DEFAULT_VALUE
+): ModalsAction => ({
   type: SHOW_MODAL,
   modalId,
   data
@@ -24,7 +27,7 @@ export const hideModal = (modalId: string): ModalsAction => ({
   type: HIDE_MODAL,
   modalId
 });
-export const mergeModalData = (modalId: string, data: any): ModalsAction => ({
+export const mergeModalData = (modalId: string, data: { [key: string]: any }): ModalsAction => ({
   type: MERGE_MODAL_DATA,
   modalId,
   data

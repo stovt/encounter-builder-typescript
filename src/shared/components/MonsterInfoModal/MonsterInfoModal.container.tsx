@@ -49,7 +49,9 @@ const MonsterInfoModalContainer: React.FC<Props> = ({
 };
 
 const mapStateToProps = (state: State) => ({
-  modalData: getData(state, MONSTER_INFO_MODAL_ID),
+  modalData: getData(state, MONSTER_INFO_MODAL_ID) as {
+    monsterID: string;
+  },
   getMonsterById: (monsterID: string) => getMonsterByID(state, monsterID),
   monsterLoading: isMonsterLoading(state),
   monsterError: getMonsterError(state)

@@ -35,4 +35,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   )
-)(EncounterBuilder) as React.ComponentType<any>;
+)(EncounterBuilder) as React.ComponentType;

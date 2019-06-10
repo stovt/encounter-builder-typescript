@@ -1,10 +1,9 @@
-// @flow
 import React from 'react';
 import { injectIntl, InjectedIntl } from 'react-intl';
 import { CR_VALUES_STR, CR_VALUES_NUMB } from '../MonstersTable.constants';
 
 interface Props {
-  onChange: (value: any) => void;
+  onChange: (value: { minCR: string; maxCR: string }) => void;
   intl: InjectedIntl;
 }
 
@@ -13,7 +12,7 @@ const CRFilter: React.FC<Props> = ({ onChange, intl: { formatMessage } }) => {
   const [maxCR, setMaxCR] = React.useState<string>('');
 
   const handleChangeMin = React.useCallback(
-    e => {
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
       setMinCR(e.target.value);
       onChange({
         minCR: e.target.value,
@@ -24,7 +23,7 @@ const CRFilter: React.FC<Props> = ({ onChange, intl: { formatMessage } }) => {
   );
 
   const handleChangeMax = React.useCallback(
-    e => {
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
       setMaxCR(e.target.value);
       onChange({
         minCR,

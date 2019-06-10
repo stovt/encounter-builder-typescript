@@ -3,7 +3,7 @@ import theme from 'styles/variables';
 import { MOBILE_BREAKPOINT_NAME } from './BreakpointListener.constants';
 
 export const fromBreakpoints = (
-  callback: (breakpoint: Breakpoint) => any,
+  callback: (breakpoint: Breakpoint) => void,
   excludeMobileBreakpoint: boolean = true
 ): Record<Breakpoint, any> => {
   let keys = Object.keys(theme.flexboxgrid.breakpoints);
@@ -17,10 +17,10 @@ export const fromBreakpoints = (
       [breakpoint]: callback(breakpoint as Breakpoint)
     }),
     {}
-  ) as Record<Breakpoint, any>;
+  ) as Record<Breakpoint, number>;
 };
 
-export const getMediaQueryList = (breakpoint: Breakpoint): MediaQueryList =>
+export const getMediaQueryList = (breakpoint: Breakpoint) =>
   window.matchMedia(
     `${theme.flexboxgrid.mediaQuery} and (min-width: ${theme.flexboxgrid.breakpoints[breakpoint]}em)`
   );

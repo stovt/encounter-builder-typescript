@@ -25,8 +25,7 @@ const MultiValueLabel: React.FC<Props> = props => {
     [descriptionItemsCount]
   );
 
-  const { intl: omitIntl, ...rest } = props;
-  const component = <components.MultiValueLabel {...rest} />;
+  const component = <components.MultiValueLabel {...props} />;
 
   return (
     <StatefulToolTip parent={component} position='bottom' arrow='center'>

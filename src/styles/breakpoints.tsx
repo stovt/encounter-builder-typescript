@@ -1,11 +1,6 @@
 import { css, CSSObject, SimpleInterpolation, BaseThemedCssFunction } from 'styled-components';
 
-export interface Breakpoints {
-  xs: number;
-  sm: number;
-  md: number;
-  lg: number;
-}
+export type Breakpoints = Record<'xs' | 'sm' | 'md' | 'lg', number>;
 
 type ReturnType = Record<'xs' | 'sm' | 'md' | 'lg', BaseThemedCssFunction<any>>;
 

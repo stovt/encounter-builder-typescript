@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import monstersData from 'public/data/monsters/monsters.json';
-import { API_ENDPOINT, API_CORS_ENDPOINT } from 'config';
+import config from 'config';
 import { MonstersBase, Monster } from 'shared/types/monsters';
 import { addMonsterToBattleTable } from 'pages/EncounterBattle/EncounterBattle.actions';
 import {
@@ -14,6 +14,8 @@ import {
   ADD_MONSTER_TO_GROUP,
   addMonsterToGroupSuccess
 } from './EncounterBuilder.actions';
+
+const { API_CORS_ENDPOINT, API_ENDPOINT } = config;
 
 const fetchAllMonsters = () => monstersData;
 
