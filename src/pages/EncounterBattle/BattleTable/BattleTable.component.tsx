@@ -75,25 +75,14 @@ const BattleTable: React.FC<Props> = ({ monsters, turn, showModal, intl: { forma
         Header: formatMessage({ id: 'monster.speed.title' }),
         accessor: 'monster.speed',
         Cell: ({ value }: { value: MonsterSpeed }) => {
+          const { walk, burrow, fly, swim, climb } = value;
           const speed = `\
-      ${
-        value.walk ? `${formatMessage({ id: 'monster.speed.walk' }, { speed: value.walk })}, ` : ''
-      }\
-      ${
-        value.burrow
-          ? `${formatMessage({ id: 'monster.speed.burrow' }, { speed: value.burrow })}, `
-          : ''
-      }\
-      ${value.fly ? `${formatMessage({ id: 'monster.speed.fly' }, { speed: value.fly })}, ` : ''}\
-      ${
-        value.swim ? `${formatMessage({ id: 'monster.speed.swim' }, { speed: value.swim })}, ` : ''
-      }\
-      ${
-        value.climb
-          ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: value.climb })}, `
-          : ''
-      }\
-      `.slice(0, -2);
+${walk ? `${formatMessage({ id: 'monster.speed.walk' }, { speed: walk })}, ` : ''}\
+${burrow ? `${formatMessage({ id: 'monster.speed.burrow' }, { speed: burrow })}, ` : ''}\
+${fly ? `${formatMessage({ id: 'monster.speed.fly' }, { speed: fly })}, ` : ''}\
+${swim ? `${formatMessage({ id: 'monster.speed.swim' }, { speed: swim })}, ` : ''}\
+${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` : ''}\
+`.slice(0, -2);
 
           return speed;
         },

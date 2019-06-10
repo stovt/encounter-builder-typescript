@@ -30,22 +30,7 @@ const Party: React.FC<Props> = ({
             <FormattedMessage id='group-info.players' />:
           </b>
         </StyledPartyItem>
-        <StyledPartyItem>
-          <b>
-            <FormattedMessage id='group-info.level' />:
-          </b>
-        </StyledPartyItem>
-      </StyledParty>
-      {partyLevels.map((partyLevel, index) => (
-        <StyledParty key={partyLevel.id}>
-          <StyledPartyItem>
-            <Select
-              onChange={setPartyPlayerCount}
-              value={partyLevel.playerCount}
-              maxValue={MAX_PLAYER_COUNT}
-              id={partyLevel.id}
-            />
-          </StyledPartyItem>
+        {partyLevels.map(partyLevel => (
           <StyledPartyItem>
             <Select
               onChange={setPartyLevel}
@@ -54,13 +39,37 @@ const Party: React.FC<Props> = ({
               id={partyLevel.id}
             />
           </StyledPartyItem>
-          {!!index && (
+        ))}
+      </StyledParty>
+      <StyledParty>
+        <StyledPartyItem>
+          <b>
+            <FormattedMessage id='group-info.level' />:
+          </b>
+        </StyledPartyItem>
+        {partyLevels.map(partyLevel => (
+          <StyledPartyItem key={partyLevel.id}>
+            <Select
+              onChange={setPartyPlayerCount}
+              value={partyLevel.playerCount}
+              maxValue={MAX_PLAYER_COUNT}
+              id={partyLevel.id}
+            />
+          </StyledPartyItem>
+        ))}
+      </StyledParty>
+      <StyledParty>
+        <StyledPartyItem>&nbsp;</StyledPartyItem>
+        {partyLevels.map((partyLevel, index) =>
+          index ? (
             <StyledPartyItem>
               <RemovePartyLevelButton removePartyLevel={removePartyLevel} id={partyLevel.id} />
             </StyledPartyItem>
-          )}
-        </StyledParty>
-      ))}
+          ) : (
+            <StyledPartyItem />
+          )
+        )}
+      </StyledParty>
     </StyledPartyWrapper>
     <StyledAddPartyLevelButton onClick={addPartyLevel} />
   </>
