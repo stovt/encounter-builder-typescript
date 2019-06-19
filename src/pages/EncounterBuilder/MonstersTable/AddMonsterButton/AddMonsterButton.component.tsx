@@ -1,22 +1,24 @@
 import * as React from 'react';
-import { EncounterBuilderAction } from 'shared/types/encounterBuilder';
-import { Monster } from 'shared/types/monsters';
 import { IconWrapper, PlusIcon } from 'shared/components/Icons';
 import { StyledButton } from 'shared/components/forms';
+import { useAddMonsterToGroupDispatch } from 'pages/EncounterBuilder/EncounterBuilder.actions';
+import { useMonsterByIDSelector } from 'pages/EncounterBuilder/EncounterBuilder.selectors';
 
 interface Props {
   monsterID: string;
-  getMonsterById: (monsterID: string) => Monster | undefined;
-  addMonsterToGroup: (monsterID: string, monster: Monster | undefined) => EncounterBuilderAction;
 }
 
-const AddMonsterButton: React.FC<Props> = ({ monsterID, getMonsterById, addMonsterToGroup }) => {
+const AddMonsterButton: React.FC<Props> = ({ monsterID }) => {
+  const addMonsterToGroup = useAddMonsterToGroupDispatch();
+
+  const monster = useMonsterByIDSelector(monsterID);
+
   const handleOnClick = React.useCallback(
     (e: React.SyntheticEvent<HTMLButtonElement>) => {
       e.stopPropagation();
-      addMonsterToGroup(monsterID, getMonsterById(monsterID));
+      addMonsterToGroup(monsterID, monster);
     },
-    [monsterID, getMonsterById, addMonsterToGroup]
+    [addMonsterToGroup, monsterID, monster]
   );
 
   return (

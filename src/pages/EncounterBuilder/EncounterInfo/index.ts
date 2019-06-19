@@ -1,1 +1,1 @@
-export { default } from './EncounterInfo.container';
+export { default } from './EncounterInfo.component';

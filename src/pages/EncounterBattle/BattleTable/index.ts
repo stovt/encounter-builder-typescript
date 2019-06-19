@@ -1,1 +1,1 @@
-export { default } from './BattleTable.container';
+export { default } from './BattleTable.component';

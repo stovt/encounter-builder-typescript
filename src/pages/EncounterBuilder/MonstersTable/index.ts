@@ -1,1 +1,1 @@
-export { default } from './MonstersTable.container';
+export { default } from './MonstersTable.component';

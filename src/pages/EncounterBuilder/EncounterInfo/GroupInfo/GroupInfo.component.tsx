@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { EncounterBuilderAction, Group } from 'shared/types/encounterBuilder';
-import { Monster } from 'shared/types/monsters';
+import { Group } from 'shared/types/encounterBuilder';
 import { CR_INFO } from 'shared/constants';
 import StyledMonsterName from './MonsterName';
 import StyledMonsterDescription from './MonsterDescription';
@@ -9,10 +8,9 @@ import Input from './Input';
 
 interface Props {
   group: Group;
-  setMonsterQTY: (monster: Monster, qty: number) => EncounterBuilderAction;
 }
 
-const GroupInfo: React.FC<Props> = ({ group: { monster, qty }, setMonsterQTY }) => (
+const GroupInfo: React.FC<Props> = ({ group: { monster, qty } }) => (
   <StyledGroupInfo>
     <div>
       <StyledMonsterName>{monster.name}</StyledMonsterName>
@@ -22,7 +20,7 @@ const GroupInfo: React.FC<Props> = ({ group: { monster, qty }, setMonsterQTY }) 
       />
     </div>
     <div>
-      <Input monsterID={monster.id} setMonsterQTY={setMonsterQTY} qty={qty} />
+      <Input monsterID={monster.id} qty={qty} />
     </div>
   </StyledGroupInfo>
 );

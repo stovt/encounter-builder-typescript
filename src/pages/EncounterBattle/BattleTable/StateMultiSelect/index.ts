@@ -1,1 +1,1 @@
-export { default } from './StateMultiSelect.container';
+export { default } from './StateMultiSelect.component';

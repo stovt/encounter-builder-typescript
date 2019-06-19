@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { EncounterBuilderAction } from 'shared/types/encounterBuilder';
 import { IconWrapper, RemoveIcon } from 'shared/components/Icons';
+import { useRemovePartyLevelDispatch } from 'pages/EncounterBuilder/EncounterBuilder.actions';
 import StyledRemovePartyLevelButton from './RemovePartyLevelButton.styled';
 
 interface Props {
-  removePartyLevel: (id: string) => EncounterBuilderAction;
   id: string;
 }
 
-const RemovePartyLevelButton: React.FC<Props> = ({ removePartyLevel, id }) => {
+const RemovePartyLevelButton: React.FC<Props> = ({ id }) => {
+  const removePartyLevel = useRemovePartyLevelDispatch();
+
   const handleOnClick = React.useCallback(() => {
     removePartyLevel(id);
   }, [removePartyLevel, id]);

@@ -3,8 +3,8 @@ import { injectIntl, InjectedIntl } from 'react-intl';
 import ReactTable from 'react-table';
 import { PartyLevels } from 'shared/types/encounterBuilder';
 import { MonstersBase } from 'shared/types/monsters';
-import { ModalsAction } from 'shared/types/modals';
 import { CR_INFO } from 'shared/constants';
+import { useShowModalDispatch } from 'shared/components/Modal/Modal.actions';
 import { MONSTER_INFO_MODAL_ID } from 'shared/components/MonsterInfoModal/MonsterInfoModal.constants';
 import AddMonsterButton from './AddMonsterButton';
 import CRFilter from './CRFilter';
@@ -16,7 +16,6 @@ import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from './MonstersTable.constants'
 interface Props {
   monsters: MonstersBase;
   partyLevels: PartyLevels;
-  showModal: (modalId: string, data: { monsterID: string }) => ModalsAction;
   intl: InjectedIntl;
 }
 interface Filter {
@@ -25,12 +24,9 @@ interface Filter {
   pivotId?: string;
 }
 
-const MonstersTable: React.FC<Props> = ({
-  monsters,
-  partyLevels,
-  showModal,
-  intl: { formatMessage }
-}) => {
+const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatMessage } }) => {
+  const showModal = useShowModalDispatch();
+
   const defaultFilterMethod = React.useCallback((filter: Filter, row: any) => {
     const id = filter.pivotId || filter.id;
     if (row[id] !== undefined) {

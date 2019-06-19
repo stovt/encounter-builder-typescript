@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { EncounterBattleAction } from 'shared/types/encounterBattle';
 import { StyledInput } from 'shared/components/forms';
+import { useSetMonsterHPDispatch } from 'pages/EncounterBattle/EncounterBattle.actions';
 
 type Value = string | number;
 
 interface Props {
   value: Value;
   rowID: string;
-  setMonsterHP: (rowID: string, hp: number) => EncounterBattleAction;
 }
 
-const HPInput: React.FC<Props> = ({ value, rowID, setMonsterHP }) => {
+const HPInput: React.FC<Props> = ({ value, rowID }) => {
   const [val, setVal] = React.useState<Value>(value);
+
+  const setMonsterHP = useSetMonsterHPDispatch();
 
   React.useEffect(() => {
     setVal(value);
@@ -21,7 +22,7 @@ const HPInput: React.FC<Props> = ({ value, rowID, setMonsterHP }) => {
   const handleEval = React.useCallback((v: Value) => Number(new Function(`return ${v}`)()), []);
 
   const handleSetMonsterHP = React.useCallback(
-    (hp: string | number): void => {
+    (hp: Value): void => {
       setMonsterHP(rowID, Number(hp));
     },
     [rowID, setMonsterHP]

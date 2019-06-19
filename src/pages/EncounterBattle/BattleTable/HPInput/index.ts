@@ -1,1 +1,1 @@
-export { default } from './HPInput.container';
+export { default } from './HPInput.component';

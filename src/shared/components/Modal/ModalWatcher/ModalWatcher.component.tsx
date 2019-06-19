@@ -1,12 +1,11 @@
 import React from 'react';
 import GlobalStyles from './ModalWatcher.styles';
 import { attachModalStyles, detachModalStyles } from './ModalWatcher.helpers';
+import { useAnyVisibleSelector } from '../Modal.selectors';
 
-interface Props {
-  anyModalVisible: boolean;
-}
+const ModalWatcher: React.FC = () => {
+  const anyModalVisible = useAnyVisibleSelector();
 
-const ModalWatcher: React.FC<Props> = ({ anyModalVisible }) => {
   React.useEffect(() => {
     if (anyModalVisible) {
       attachModalStyles();

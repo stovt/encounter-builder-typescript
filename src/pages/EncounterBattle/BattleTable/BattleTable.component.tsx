@@ -2,19 +2,22 @@ import * as React from 'react';
 import { injectIntl, InjectedIntl } from 'react-intl';
 import ReactTable from 'react-table';
 import { MonsterActions, BattleMonsterRows, MonsterSpeed } from 'shared/types/monsters';
-import { ModalsAction } from 'shared/types/modals';
 import { MONSTER_INFO_MODAL_ID } from 'shared/components/MonsterInfoModal/MonsterInfoModal.constants';
+import { useShowModalDispatch } from 'shared/components/Modal/Modal.actions';
+import { useTurnSelector } from '../EncounterBattle.selectors';
 import HPInput from './HPInput';
 import StateMultiSelect from './StateMultiSelect';
 
 interface Props {
   monsters: BattleMonsterRows;
-  turn: number;
-  showModal: (modalId: string, data: { monsterID: string }) => ModalsAction;
   intl: InjectedIntl;
 }
 
-const BattleTable: React.FC<Props> = ({ monsters, turn, showModal, intl: { formatMessage } }) => {
+const BattleTable: React.FC<Props> = ({ monsters, intl: { formatMessage } }) => {
+  const showModal = useShowModalDispatch();
+
+  const turn = useTurnSelector();
+
   const handleTrProps = React.useCallback(
     (state: any, { index }: any) => ({
       style: {

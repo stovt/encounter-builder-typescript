@@ -1,1 +1,1 @@
-export { default } from './GroupInfo.container';
+export { default } from './GroupInfo.component';

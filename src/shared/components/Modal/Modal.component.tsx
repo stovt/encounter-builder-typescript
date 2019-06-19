@@ -1,19 +1,20 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { ModalsAction } from 'shared/types/modals';
 import { noop } from 'shared/helpers';
 import Overlay from './Overlay';
 import StyledModal from './Modal.styled';
 import CloseButton from './CloseButton';
 import Title from './Title';
+import {
+  useRegisterModalDispatch,
+  useUnregisterModalDispatch,
+  useHideModalDispatch
+} from './Modal.actions';
+import { useVisibleSelector } from './Modal.selectors';
 
 const modalsRoot = document.getElementById('modals');
 
 interface Props {
-  registerModal: (modalId: string) => ModalsAction;
-  unregisterModal: (modalId: string) => ModalsAction;
-  hideModal: (modalId: string) => ModalsAction;
-  visible?: boolean;
   modalId: string;
   onRequestClose?: () => void;
   showCloseBtn?: boolean;
@@ -28,10 +29,6 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = ({
-  registerModal,
-  unregisterModal,
-  hideModal,
-  visible = false,
   modalId,
   onRequestClose = noop,
   showCloseBtn = true,
@@ -49,6 +46,12 @@ const Modal: React.FC<Props> = ({
 
   const overlayRef = React.useRef<HTMLDivElement>(null);
 
+  const registerModal = useRegisterModalDispatch();
+  const unregisterModal = useUnregisterModalDispatch();
+  const hideModal = useHideModalDispatch();
+
+  const visible = useVisibleSelector(modalId);
+
   React.useEffect(() => {
     /* SSR mismatch fix */
     setHydrated(true);
@@ -57,7 +60,8 @@ const Modal: React.FC<Props> = ({
     return () => {
       unregisterModal(modalId);
     };
-  }, [modalId, registerModal, unregisterModal]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalId]);
 
   const closeModal = React.useCallback(() => {
     onRequestClose();

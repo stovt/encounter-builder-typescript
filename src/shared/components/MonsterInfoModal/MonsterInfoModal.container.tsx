@@ -1,43 +1,30 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { State, Dispatch, ErrorType } from 'shared/types';
-import { Monster } from 'shared/types/monsters';
-import { EncounterBuilderAction } from 'shared/types/encounterBuilder';
 import Modal from 'shared/components/Modal';
-import { getData } from 'shared/components/Modal/Modal.selectors';
+import { useDataSelector } from 'shared/components/Modal/Modal.selectors';
 import AlertBox from 'shared/components/AlertBox';
 import LoadingComponent from 'shared/components/LoadingComponent';
-import { fetchMonsterByID } from 'pages/EncounterBuilder/EncounterBuilder.actions';
+import { useFetchMonsterByIDDispatch } from 'pages/EncounterBuilder/EncounterBuilder.actions';
 import {
-  getMonsterByID,
-  isMonsterLoading,
-  getMonsterError
+  useMonsterByIDSelector,
+  useMonsterLoadingSelector,
+  useMonsterErrorSelector
 } from 'pages/EncounterBuilder/EncounterBuilder.selectors';
 import { MONSTER_INFO_MODAL_ID } from './MonsterInfoModal.constants';
 import MonsterInfoModal from './MonsterInfoModal.component';
 
-interface Props {
-  modalData: {
-    monsterID: string;
-  };
-  getMonsterById: (monsterID: string) => Monster | undefined;
-  fetchMonsterById: (monsterID: string) => EncounterBuilderAction;
-  monsterLoading: boolean;
-  monsterError: ErrorType | null;
-}
+const MonsterInfoModalContainer: React.FC = () => {
+  const fetchMonsterById = useFetchMonsterByIDDispatch();
 
-const MonsterInfoModalContainer: React.FC<Props> = ({
-  modalData: { monsterID },
-  getMonsterById,
-  fetchMonsterById,
-  monsterLoading,
-  monsterError
-}) => {
+  const modalData = useDataSelector(MONSTER_INFO_MODAL_ID);
+
+  const monster = useMonsterByIDSelector(modalData.monsterID);
+  const monsterLoading = useMonsterLoadingSelector();
+  const monsterError = useMonsterErrorSelector();
+
   React.useEffect(() => {
-    if (monsterID) fetchMonsterById(monsterID);
-  }, [fetchMonsterById, monsterID]);
-
-  const monster = React.useMemo(() => getMonsterById(monsterID), [getMonsterById, monsterID]);
+    if (modalData.monsterID && !monster) fetchMonsterById(modalData.monsterID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalData.monsterID, monster]);
 
   return (
     <Modal modalId={MONSTER_INFO_MODAL_ID} title={monster ? monster.name : ''} width='90vw'>
@@ -48,20 +35,4 @@ const MonsterInfoModalContainer: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: State) => ({
-  modalData: getData(state, MONSTER_INFO_MODAL_ID) as {
-    monsterID: string;
-  },
-  getMonsterById: (monsterID: string) => getMonsterByID(state, monsterID),
-  monsterLoading: isMonsterLoading(state),
-  monsterError: getMonsterError(state)
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchMonsterById: (monsterID: string) => dispatch(fetchMonsterByID(monsterID))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MonsterInfoModalContainer);
+export default MonsterInfoModalContainer;

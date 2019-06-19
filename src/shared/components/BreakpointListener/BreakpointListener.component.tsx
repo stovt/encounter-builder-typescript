@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BreakpointsAction, Breakpoint } from 'shared/types/breakpoints';
+import { Breakpoint } from 'shared/types/breakpoints';
 import { fromBreakpoints, getMediaQueryList } from './BreakpointListener.helpers';
+import { useBreakpointChangeDispatch } from './BreakpointListener.actions';
 
 interface Props {
-  breakpointChange: (breakpoint: Breakpoint, matches: boolean) => BreakpointsAction;
   children: React.ReactElement;
 }
 
@@ -12,8 +12,10 @@ interface Listener {
   mql: MediaQueryList;
 }
 
-const BreakpointListener: React.FC<Props> = ({ breakpointChange, children }) => {
+const BreakpointListener: React.FC<Props> = ({ children }) => {
   const listeners = React.useRef<Record<Breakpoint, Listener> | null>(null);
+
+  const breakpointChange = useBreakpointChangeDispatch();
 
   React.useEffect(() => {
     listeners.current = fromBreakpoints(breakpoint => {

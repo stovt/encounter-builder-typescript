@@ -3,4 +3,4 @@ import reducer from './BreakpointListener.reducer';
 
 reducerRegistry.register('breakpoints', reducer);
 
-export { default } from './BreakpointListener.container';
+export { default } from './BreakpointListener.component';

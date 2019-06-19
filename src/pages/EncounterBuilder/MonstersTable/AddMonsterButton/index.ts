@@ -1,1 +1,1 @@
-export { default } from './AddMonsterButton.container';
+export { default } from './AddMonsterButton.component';

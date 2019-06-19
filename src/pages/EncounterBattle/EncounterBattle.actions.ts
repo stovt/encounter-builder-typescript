@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { EncounterBattleAction } from 'shared/types/encounterBattle';
 import { Monster, MonsterState } from 'shared/types/monsters';
 
@@ -25,3 +26,20 @@ export const setMonsterState = (rowID: string, state: MonsterState): EncounterBa
 export const nextTurn = (): EncounterBattleAction => ({
   type: NEXT_TURN
 });
+
+export const useAddMonsterToBattleTableDispatch = () => {
+  const dispatch = useDispatch();
+  return (monster: Monster) => dispatch(addMonsterToBattleTable(monster));
+};
+export const useSetMonsterHPDispatch = () => {
+  const dispatch = useDispatch();
+  return (rowID: string, hp: number) => dispatch(setMonsterHP(rowID, hp));
+};
+export const useSetMonsterStateDispatch = () => {
+  const dispatch = useDispatch();
+  return (rowID: string, state: MonsterState) => dispatch(setMonsterState(rowID, state));
+};
+export const useNextTurnDispatch = () => {
+  const dispatch = useDispatch();
+  return () => dispatch(nextTurn());
+};

@@ -1,1 +1,1 @@
-export { default } from './ModalWatcher.container';
+export { default } from './ModalWatcher.component';

@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { ModalsAction } from 'shared/types/modals';
 import { MODAL_DATA_DEFAULT_VALUE } from './Modal.constants';
 
@@ -32,3 +33,23 @@ export const mergeModalData = (modalId: string, data: { [key: string]: any }): M
   modalId,
   data
 });
+export const useRegisterModalDispatch = () => {
+  const dispatch = useDispatch();
+  return (modalId: string) => dispatch(registerModal(modalId));
+};
+export const useUnregisterModalDispatch = () => {
+  const dispatch = useDispatch();
+  return (modalId: string) => dispatch(unregisterModal(modalId));
+};
+export const useShowModalDispatch = () => {
+  const dispatch = useDispatch();
+  return (modalId: string, data: { [key: string]: any }) => dispatch(showModal(modalId, data));
+};
+export const useHideModalDispatch = () => {
+  const dispatch = useDispatch();
+  return (modalId: string) => dispatch(hideModal(modalId));
+};
+export const useMergeModalDataDispatch = () => {
+  const dispatch = useDispatch();
+  return (modalId: string, data: { [key: string]: any }) => dispatch(mergeModalData(modalId, data));
+};

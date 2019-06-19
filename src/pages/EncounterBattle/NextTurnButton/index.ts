@@ -1,1 +1,1 @@
-export { default } from './NextTurnButton.container';
+export { default } from './NextTurnButton.component';

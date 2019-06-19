@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { ErrorType } from 'shared/types';
 import { EncounterBuilderAction } from 'shared/types/encounterBuilder';
 import { MonstersBase, Monster } from 'shared/types/monsters';
@@ -71,3 +72,57 @@ export const setMonsterQTY = (monster: Monster, qty: number): EncounterBuilderAc
   monster,
   qty
 });
+
+export const useFetchAllMonstersDispatch = () => {
+  const dispatch = useDispatch();
+  return () => dispatch(fetchAllMonsters());
+};
+export const useFetchAllMonstersSuccessDispatch = () => {
+  const dispatch = useDispatch();
+  return (monsters: MonstersBase) => dispatch(fetchAllMonstersSuccess(monsters));
+};
+export const useFetchAllMonstersErrorDispatch = () => {
+  const dispatch = useDispatch();
+  return (error: ErrorType) => dispatch(fetchAllMonstersError(error));
+};
+export const useFetchMonsterByIDDispatch = () => {
+  const dispatch = useDispatch();
+  return (monsterID: string) => dispatch(fetchMonsterByID(monsterID));
+};
+export const useFetchMonsterByIDSuccessDispatch = () => {
+  const dispatch = useDispatch();
+  return (monster: Monster) => dispatch(fetchMonsterByIDSuccess(monster));
+};
+export const useFetchMonsterByIDErrorDispatch = () => {
+  const dispatch = useDispatch();
+  return (error: ErrorType) => dispatch(fetchMonsterByIDError(error));
+};
+export const useAddPartyLevelDispatch = () => {
+  const dispatch = useDispatch();
+  return () => dispatch(addPartyLevel());
+};
+export const useRemovePartyLevelDispatch = () => {
+  const dispatch = useDispatch();
+  return (id: string) => dispatch(removePartyLevel(id));
+};
+export const useSetPartyLevelDispatch = () => {
+  const dispatch = useDispatch();
+  return (value: number, id: string) => dispatch(setPartyLevel(value, id));
+};
+export const useSetPartyPlayerCountDispatch = () => {
+  const dispatch = useDispatch();
+  return (value: number, id: string) => dispatch(setPartyPlayerCount(value, id));
+};
+export const useAddMonsterToGroupDispatch = () => {
+  const dispatch = useDispatch();
+  return (monsterID: string, monster: Monster | undefined) =>
+    dispatch(addMonsterToGroup(monsterID, monster));
+};
+export const useAddMonsterToGroupSuccessDispatch = () => {
+  const dispatch = useDispatch();
+  return (monsterID: string) => dispatch(addMonsterToGroupSuccess(monsterID));
+};
+export const useSetMonsterQTYDispatch = () => {
+  const dispatch = useDispatch();
+  return (monster: Monster, qty: number) => dispatch(setMonsterQTY(monster, qty));
+};

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Col, Row } from 'react-styled-flexboxgrid';
-import { ErrorType } from 'shared/types';
-import { Breakpoints } from 'shared/types/breakpoints';
-import { EncounterBuilderAction, Groups, PartyLevels } from 'shared/types/encounterBuilder';
-import { MonstersBase } from 'shared/types/monsters';
+import { useBreakpoints } from 'shared/hooks/useBreakpoints';
 import LoadingComponent from 'shared/components/LoadingComponent';
 import AlertBox from 'shared/components/AlertBox';
 import Divider from 'shared/components/Divider';
@@ -14,30 +11,32 @@ import Legend from './Legend';
 import MonstersTable from './MonstersTable';
 import BattleButton from './BattleButton';
 
-interface Props {
-  monsters: MonstersBase;
-  loading: boolean;
-  error: ErrorType;
-  groups: Groups;
-  partyLevels: PartyLevels;
-  breakpoints: Breakpoints;
-  monsterLoading: boolean;
-  fetchAllMonsters: () => EncounterBuilderAction;
-}
+import { useFetchAllMonstersDispatch } from './EncounterBuilder.actions';
+import {
+  useMonstersSelector,
+  useLoadingSelector,
+  useErrorSelector,
+  useGroupsSelector,
+  usePartyLevelsSelector,
+  useMonsterLoadingSelector
+} from './EncounterBuilder.selectors';
 
-const EncounterBuilder: React.FC<Props> = ({
-  monsters,
-  loading,
-  error,
-  groups,
-  partyLevels,
-  breakpoints,
-  monsterLoading,
-  fetchAllMonsters
-}) => {
+const EncounterBuilder: React.FC = () => {
+  const fetchAllMonsters = useFetchAllMonstersDispatch();
+
+  const breakpoints = useBreakpoints();
+
+  const monsters = useMonstersSelector();
+  const loading = useLoadingSelector();
+  const error = useErrorSelector();
+  const groups = useGroupsSelector();
+  const partyLevels = usePartyLevelsSelector();
+  const monsterLoading = useMonsterLoadingSelector();
+
   React.useEffect(() => {
     if (!monsters.length) fetchAllMonsters();
-  }, [fetchAllMonsters, monsters.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) return <LoadingComponent />;
   if (error) return <AlertBox>{error}</AlertBox>;
