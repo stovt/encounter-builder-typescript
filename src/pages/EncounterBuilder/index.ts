@@ -5,4 +5,4 @@ import encounterBuilderReducer from './EncounterBuilder.reducer';
 reducerRegistry.register('encounterBattle', encounterBattleReducer);
 reducerRegistry.register('encounterBuilder', encounterBuilderReducer);
 
-export { default } from './EncounterBuilder.container';
+export { default } from './EncounterBuilder.component';

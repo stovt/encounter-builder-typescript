@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Col, Row } from 'react-styled-flexboxgrid';
-import { useBreakpoints } from 'shared/hooks/useBreakpoints';
+import useBreakpoints from 'shared/hooks/useBreakpoints';
+import useInjectSaga from 'shared/hooks/useInjectSaga';
 import LoadingComponent from 'shared/components/LoadingComponent';
 import AlertBox from 'shared/components/AlertBox';
 import Divider from 'shared/components/Divider';
@@ -10,7 +11,7 @@ import Totals from './Totals';
 import Legend from './Legend';
 import MonstersTable from './MonstersTable';
 import BattleButton from './BattleButton';
-
+import sagas from './EncounterBuilder.sagas';
 import { useFetchAllMonstersDispatch } from './EncounterBuilder.actions';
 import {
   useMonstersSelector,
@@ -22,6 +23,8 @@ import {
 } from './EncounterBuilder.selectors';
 
 const EncounterBuilder: React.FC = () => {
+  useInjectSaga(sagas);
+
   const fetchAllMonsters = useFetchAllMonstersDispatch();
 
   const breakpoints = useBreakpoints();
