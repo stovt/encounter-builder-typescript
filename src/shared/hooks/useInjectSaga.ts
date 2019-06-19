@@ -9,7 +9,6 @@ const useInjectSaga = (sagas: Saga) => {
     sagasRef.current = sagaMiddleware.run(sagas);
 
     return () => {
-      console.log('here');
       (sagasRef.current as Task).cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
