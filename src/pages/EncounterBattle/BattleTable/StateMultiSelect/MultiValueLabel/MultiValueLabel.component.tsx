@@ -2,7 +2,7 @@ import * as React from 'react';
 import { injectIntl, InjectedIntl } from 'react-intl';
 import { StatefulToolTip } from 'react-portal-tooltip';
 import { components } from 'react-select';
-import { MultiValueProps } from 'react-select/lib/components/MultiValue';
+import { MultiValueProps } from 'react-select/src/components/MultiValue';
 import { MonsterStateValue } from 'shared/types/monsters';
 
 interface Props extends MultiValueProps<MonsterStateValue> {

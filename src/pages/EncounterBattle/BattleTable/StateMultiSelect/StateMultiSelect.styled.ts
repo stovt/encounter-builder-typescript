@@ -1,4 +1,4 @@
-import { Styles } from 'react-select/lib/styles';
+import { Styles } from 'react-select/src/styles';
 import { theme } from 'styles';
 
 export const customStyles: Styles = {
