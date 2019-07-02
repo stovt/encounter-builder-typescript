@@ -33,9 +33,9 @@ const Party: React.FC<Props> = ({ partyLevels }) => {
           {partyLevels.map(partyLevel => (
             <StyledPartyItem key={partyLevel.id}>
               <Select
-                onChange={setPartyLevel}
-                value={partyLevel.level.level}
-                maxValue={MAX_LEVEL}
+                onChange={setPartyPlayerCount}
+                value={partyLevel.playerCount}
+                maxValue={MAX_PLAYER_COUNT}
                 id={partyLevel.id}
               />
             </StyledPartyItem>
@@ -50,9 +50,9 @@ const Party: React.FC<Props> = ({ partyLevels }) => {
           {partyLevels.map(partyLevel => (
             <StyledPartyItem key={partyLevel.id}>
               <Select
-                onChange={setPartyPlayerCount}
-                value={partyLevel.playerCount}
-                maxValue={MAX_PLAYER_COUNT}
+                onChange={setPartyLevel}
+                value={partyLevel.level.level}
+                maxValue={MAX_LEVEL}
                 id={partyLevel.id}
               />
             </StyledPartyItem>
