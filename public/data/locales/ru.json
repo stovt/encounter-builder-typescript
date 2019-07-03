@@ -28,7 +28,13 @@
     "total-xp": "Всего опыта: {exp}",
     "adjusted-xp": "Урегулированый опыт: {exp}",
     "exp-per-player": "({exp} на игрока)",
-    "battle-btn": "В бой!"
+    "battle-btn": "В бой!",
+    "random-generator": {
+      "easy": "Случайно легкая",
+      "medium": "Случайно средняя",
+      "hard": "Случайно сложная",
+      "deadly": "Случайно смертельная"
+    }
   },
   "legend": {
     "title": "Легенда",
