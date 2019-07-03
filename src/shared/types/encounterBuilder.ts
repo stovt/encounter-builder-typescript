@@ -5,6 +5,7 @@ import {
   FETCH_MONSTER_BY_ID,
   FETCH_MONSTER_BY_ID_SUCCESS,
   FETCH_MONSTER_BY_ID_ERROR,
+  SET_FILTERED_MONSTER_IDS,
   ADD_PARTY_LEVEL,
   REMOVE_PARTY_LEVEL,
   SET_PARTY_LEVEL,
@@ -41,6 +42,7 @@ export type Groups = Group[];
 
 export interface EncounterBuilder {
   monsters: MonstersBase;
+  filteredMonsterIDs: string[];
   loadedMonsters: Monsters;
   monsterLoading: boolean;
   monsterError: ErrorType | null;
@@ -61,6 +63,7 @@ export type EncounterBuilderAction =
   | { type: typeof FETCH_MONSTER_BY_ID; monsterID: string }
   | { type: typeof FETCH_MONSTER_BY_ID_SUCCESS; monster: Monster }
   | { type: typeof FETCH_MONSTER_BY_ID_ERROR; error: ErrorType }
+  | { type: typeof SET_FILTERED_MONSTER_IDS; IDs: string[] }
   | { type: typeof ADD_PARTY_LEVEL }
   | { type: typeof REMOVE_PARTY_LEVEL; id: string }
   | { type: typeof SET_PARTY_LEVEL; value: number; id: string }

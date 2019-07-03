@@ -9,6 +9,7 @@ import {
   FETCH_MONSTER_BY_ID,
   FETCH_MONSTER_BY_ID_SUCCESS,
   FETCH_MONSTER_BY_ID_ERROR,
+  SET_FILTERED_MONSTER_IDS,
   ADD_PARTY_LEVEL,
   REMOVE_PARTY_LEVEL,
   SET_PARTY_LEVEL,
@@ -21,6 +22,7 @@ import { DEFAULT_PARTY_LEVELS, NEW_PARTY_LEVEL } from './EncounterBuilder.consta
 
 const initialState: EncounterBuilder = {
   monsters: [],
+  filteredMonsterIDs: [],
   loadedMonsters: [],
   monsterLoading: false,
   monsterError: null,
@@ -46,6 +48,7 @@ const encounterBuilderReducer = (
       return {
         ...state,
         monsters: action.monsters,
+        filteredMonsterIDs: action.monsters.map(monster => monster.id),
         loading: false,
         error: null
       };
@@ -75,6 +78,11 @@ const encounterBuilderReducer = (
         ...state,
         monsterLoading: false,
         monsterError: action.error
+      };
+    case SET_FILTERED_MONSTER_IDS:
+      return {
+        ...state,
+        filteredMonsterIDs: action.IDs
       };
     case ADD_PARTY_LEVEL:
       return {

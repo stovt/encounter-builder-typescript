@@ -2,10 +2,11 @@ import * as React from 'react';
 import { injectIntl, InjectedIntl } from 'react-intl';
 import ReactTable from 'react-table';
 import { PartyLevels } from 'shared/types/encounterBuilder';
-import { MonstersBase } from 'shared/types/monsters';
+import { MonsterBase, MonstersBase } from 'shared/types/monsters';
 import { CR_INFO } from 'shared/constants';
 import { useShowModalDispatch } from 'shared/components/Modal/Modal.actions';
 import { MONSTER_INFO_MODAL_ID } from 'shared/components/MonsterInfoModal/MonsterInfoModal.constants';
+import { useSetFilteredMonsterIDsDispatch } from 'pages/EncounterBuilder/EncounterBuilder.actions';
 import AddMonsterButton from './AddMonsterButton';
 import CRFilter from './CRFilter';
 import SizeFilter from './SizeFilter';
@@ -25,7 +26,10 @@ interface Filter {
 }
 
 const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatMessage } }) => {
+  const monstersTableRef = React.useRef<any>(null);
+
   const showModal = useShowModalDispatch();
+  const setFilteredMonsterIDs = useSetFilteredMonsterIDsDispatch();
 
   const defaultFilterMethod = React.useCallback((filter: Filter, row: any) => {
     const id = filter.pivotId || filter.id;
@@ -79,6 +83,14 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatM
     }),
     [showModal]
   );
+
+  const handleOnFilteredChange = React.useCallback(() => {
+    const filteredMonsterIDs = monstersTableRef.current
+      .getResolvedState()
+      .sortedData.map((data: MonsterBase) => data.id);
+
+    setFilteredMonsterIDs(filteredMonsterIDs);
+  }, [setFilteredMonsterIDs]);
 
   const columns = React.useMemo(
     () => [
@@ -139,6 +151,7 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatM
 
   return (
     <ReactTable
+      ref={monstersTableRef}
       data={monsters}
       columns={columns as any}
       pageSizeOptions={PAGE_SIZE_OPTIONS}
@@ -155,6 +168,7 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatM
       defaultFilterMethod={defaultFilterMethod}
       getTdProps={handleTdProps}
       className='-highlight'
+      onFilteredChange={handleOnFilteredChange}
     />
   );
 };

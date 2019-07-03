@@ -9,6 +9,7 @@ export const FETCH_ALL_MONSTERS_ERROR = 'encounterBuilder/FETCH_ALL_MONSTERS_ERR
 export const FETCH_MONSTER_BY_ID = 'encounterBuilder/FETCH_MONSTER_BY_ID';
 export const FETCH_MONSTER_BY_ID_SUCCESS = 'encounterBuilder/FETCH_MONSTER_BY_ID_SUCCESS';
 export const FETCH_MONSTER_BY_ID_ERROR = 'encounterBuilder/FETCH_MONSTER_BY_ID_ERROR';
+export const SET_FILTERED_MONSTER_IDS = 'encounterBuilder/SET_FILTERED_MONSTER_IDS';
 export const ADD_PARTY_LEVEL = 'encounterBuilder/ADD_PARTY_LEVEL';
 export const REMOVE_PARTY_LEVEL = 'encounterBuilder/REMOVE_PARTY_LEVEL';
 export const SET_PARTY_LEVEL = 'encounterBuilder/SET_PARTY_LEVEL';
@@ -37,6 +38,10 @@ export const fetchMonsterByIDSuccess = (monster: Monster): EncounterBuilderActio
 export const fetchMonsterByIDError = (error: ErrorType): EncounterBuilderAction => ({
   type: FETCH_MONSTER_BY_ID_ERROR,
   error
+});
+export const setFilteredMonsterIDs = (IDs: string[]): EncounterBuilderAction => ({
+  type: SET_FILTERED_MONSTER_IDS,
+  IDs
 });
 export const addPartyLevel = (): EncounterBuilderAction => ({
   type: ADD_PARTY_LEVEL
@@ -96,6 +101,10 @@ export const useFetchMonsterByIDSuccessDispatch = () => {
 export const useFetchMonsterByIDErrorDispatch = () => {
   const dispatch = useDispatch();
   return (error: ErrorType) => dispatch(fetchMonsterByIDError(error));
+};
+export const useSetFilteredMonsterIDsDispatch = () => {
+  const dispatch = useDispatch();
+  return (IDs: string[]) => dispatch(setFilteredMonsterIDs(IDs));
 };
 export const useAddPartyLevelDispatch = () => {
   const dispatch = useDispatch();
