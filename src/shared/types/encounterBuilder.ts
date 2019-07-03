@@ -10,6 +10,7 @@ import {
   REMOVE_PARTY_LEVEL,
   SET_PARTY_LEVEL,
   SET_PARTY_PLAYER_COUNT,
+  CLEAR_GROUP,
   ADD_MONSTER_TO_GROUP,
   ADD_MONSTER_TO_GROUP_SUCCESS,
   SET_MONSTER_QTY
@@ -68,6 +69,7 @@ export type EncounterBuilderAction =
   | { type: typeof REMOVE_PARTY_LEVEL; id: string }
   | { type: typeof SET_PARTY_LEVEL; value: number; id: string }
   | { type: typeof SET_PARTY_PLAYER_COUNT; value: number; id: string }
+  | { type: typeof CLEAR_GROUP }
   | { type: typeof ADD_MONSTER_TO_GROUP; monsterID: string; monster: Monster | null }
   | { type: typeof ADD_MONSTER_TO_GROUP_SUCCESS; monsterID: string }
   | { type: typeof SET_MONSTER_QTY; monster: Monster; qty: number };

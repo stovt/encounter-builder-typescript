@@ -35,3 +35,22 @@ export const scrollbarWidth = (function getScrollbarWidth() {
 
   return widthNoScroll - widthWithScroll;
 })();
+
+export const shuffle = (array: any[]) => {
+  let m = array.length;
+  let t;
+  let i;
+
+  while (m) {
+    i = Math.floor(Math.random() * m);
+    m -= 1;
+
+    t = array[m];
+    // eslint-disable-next-line no-param-reassign
+    array[m] = array[i];
+    // eslint-disable-next-line no-param-reassign
+    array[i] = t;
+  }
+
+  return array;
+};

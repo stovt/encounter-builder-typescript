@@ -44,7 +44,7 @@ export const getTotalQty = (groups: Groups): number =>
 export const getTotalPlayerCount = (partyLevels: PartyLevels): number =>
   partyLevels.reduce((acc, pl) => acc + pl.playerCount, 0);
 
-const getMultiplier = (playerCount: number, monsterCount: number): number => {
+export const getMultiplier = (playerCount: number, monsterCount: number): number => {
   let multiplierCategory;
 
   const multipliers = [0.5, 1, 1.5, 2, 2.5, 3, 4, 5];

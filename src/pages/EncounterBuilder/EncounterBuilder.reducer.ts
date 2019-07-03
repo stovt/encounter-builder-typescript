@@ -14,6 +14,7 @@ import {
   REMOVE_PARTY_LEVEL,
   SET_PARTY_LEVEL,
   SET_PARTY_PLAYER_COUNT,
+  CLEAR_GROUP,
   ADD_MONSTER_TO_GROUP,
   ADD_MONSTER_TO_GROUP_SUCCESS,
   SET_MONSTER_QTY
@@ -58,6 +59,11 @@ const encounterBuilderReducer = (
         monsters: [],
         loading: false,
         error: action.error
+      };
+    case CLEAR_GROUP:
+      return {
+        ...state,
+        groups: []
       };
     case FETCH_MONSTER_BY_ID:
     case ADD_MONSTER_TO_GROUP:

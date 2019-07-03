@@ -14,6 +14,7 @@ export const ADD_PARTY_LEVEL = 'encounterBuilder/ADD_PARTY_LEVEL';
 export const REMOVE_PARTY_LEVEL = 'encounterBuilder/REMOVE_PARTY_LEVEL';
 export const SET_PARTY_LEVEL = 'encounterBuilder/SET_PARTY_LEVEL';
 export const SET_PARTY_PLAYER_COUNT = 'encounterBuilder/SET_PARTY_PLAYER_COUNT';
+export const CLEAR_GROUP = 'encounterBuilder/CLEAR_GROUP';
 export const ADD_MONSTER_TO_GROUP = 'encounterBuilder/ADD_MONSTER_TO_GROUP';
 export const ADD_MONSTER_TO_GROUP_SUCCESS = 'encounterBuilder/ADD_MONSTER_TO_GROUP_SUCCESS';
 export const SET_MONSTER_QTY = 'encounterBuilder/SET_MONSTER_QTY';
@@ -60,6 +61,7 @@ export const setPartyPlayerCount = (value: number, id: string): EncounterBuilder
   value,
   id
 });
+export const clearGroup = () => ({ type: CLEAR_GROUP });
 export const addMonsterToGroup = (
   monsterID: string,
   monster: Monster | undefined
@@ -121,6 +123,10 @@ export const useSetPartyLevelDispatch = () => {
 export const useSetPartyPlayerCountDispatch = () => {
   const dispatch = useDispatch();
   return (value: number, id: string) => dispatch(setPartyPlayerCount(value, id));
+};
+export const useClearGroupDispatch = () => {
+  const dispatch = useDispatch();
+  return () => dispatch(clearGroup());
 };
 export const useAddMonsterToGroupDispatch = () => {
   const dispatch = useDispatch();

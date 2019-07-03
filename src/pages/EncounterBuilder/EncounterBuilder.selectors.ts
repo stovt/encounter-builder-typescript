@@ -5,7 +5,7 @@ import { MonstersBase, Monster, Monsters } from 'shared/types/monsters';
 
 export const useMonstersSelector = () =>
   useSelector<State, MonstersBase>(state => state.encounterBuilder.monsters);
-export const useFilteredMonsterIDs = () =>
+export const useFilteredMonsterIDsSelector = () =>
   useSelector<State, string[]>(state => state.encounterBuilder.filteredMonsterIDs);
 export const useLoadedMonstersSelector = () =>
   useSelector<State, Monsters>(state =>
