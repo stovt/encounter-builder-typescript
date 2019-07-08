@@ -10,6 +10,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "rootDirs": ["src", "stories"],
+    "skipLibCheck": true,
     "baseUrl": ".",
     "strict": true,
     "paths": {
