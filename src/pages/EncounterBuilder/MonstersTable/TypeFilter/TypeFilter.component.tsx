@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { TYPES } from '../MonstersTable.constants';
 
 interface Props {
   onChange: (value: string) => void;
   value: string;
-  intl: InjectedIntl;
 }
 
-const TypeFilter: React.FC<Props> = ({ onChange, value, intl: { formatMessage } }) => {
+const TypeFilter: React.FC<Props> = ({ onChange, value }) => {
+  const { formatMessage } = useIntl();
+
   const handleChange = React.useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       onChange(e.target.value);
@@ -40,4 +41,4 @@ const TypeFilter: React.FC<Props> = ({ onChange, value, intl: { formatMessage } 
   );
 };
 
-export default injectIntl(TypeFilter);
+export default TypeFilter;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import ReactTable from 'react-table';
 import { MonsterActions, BattleMonsterRows, MonsterSpeed } from 'shared/types/monsters';
 import { MONSTER_INFO_MODAL_ID } from 'shared/components/MonsterInfoModal/MonsterInfoModal.constants';
@@ -10,13 +10,14 @@ import StateMultiSelect from './StateMultiSelect';
 
 interface Props {
   monsters: BattleMonsterRows;
-  intl: InjectedIntl;
 }
 
-const BattleTable: React.FC<Props> = ({ monsters, intl: { formatMessage } }) => {
+const BattleTable: React.FC<Props> = ({ monsters }) => {
   const showModal = useShowModalDispatch();
 
   const turn = useTurnSelector();
+
+  const { formatMessage } = useIntl();
 
   const handleTrProps = React.useCallback(
     (state: any, { index }: any) => ({
@@ -157,4 +158,4 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
   );
 };
 
-export default injectIntl(BattleTable);
+export default BattleTable;

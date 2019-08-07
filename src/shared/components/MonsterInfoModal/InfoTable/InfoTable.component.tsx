@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import ReactTable from 'react-table';
 
 interface Props {
@@ -11,10 +11,11 @@ interface Props {
     wis: number;
     cha: number;
   }[];
-  intl: InjectedIntl;
 }
 
-const InfoTable: React.FC<Props> = ({ data, intl: { formatMessage } }) => {
+const InfoTable: React.FC<Props> = ({ data }) => {
+  const { formatMessage } = useIntl();
+
   const keys = Object.keys(data[0]);
 
   const columns = keys.map((key: string) => ({
@@ -46,4 +47,4 @@ const InfoTable: React.FC<Props> = ({ data, intl: { formatMessage } }) => {
   );
 };
 
-export default injectIntl(InfoTable);
+export default InfoTable;

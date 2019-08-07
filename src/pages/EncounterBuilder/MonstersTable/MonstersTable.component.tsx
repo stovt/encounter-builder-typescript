@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import ReactTable from 'react-table';
 import { PartyLevels } from 'shared/types/encounterBuilder';
 import { MonsterBase, MonstersBase } from 'shared/types/monsters';
@@ -17,7 +17,6 @@ import { DEFAULT_PAGE_SIZE, PAGE_SIZE_OPTIONS } from './MonstersTable.constants'
 interface Props {
   monsters: MonstersBase;
   partyLevels: PartyLevels;
-  intl: InjectedIntl;
 }
 interface Filter {
   id: string;
@@ -25,11 +24,13 @@ interface Filter {
   pivotId?: string;
 }
 
-const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatMessage } }) => {
+const MonstersTable: React.FC<Props> = ({ monsters, partyLevels }) => {
   const monstersTableRef = React.useRef<any>(null);
 
   const showModal = useShowModalDispatch();
   const setFilteredMonsterIDs = useSetFilteredMonsterIDsDispatch();
+
+  const { formatMessage } = useIntl();
 
   const defaultFilterMethod = React.useCallback((filter: Filter, row: any) => {
     const id = filter.pivotId || filter.id;
@@ -173,4 +174,4 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels, intl: { formatM
   );
 };
 
-export default injectIntl(MonstersTable);
+export default MonstersTable;

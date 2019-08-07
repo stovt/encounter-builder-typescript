@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { Monster } from 'shared/types/monsters';
 import Divider from 'shared/components/Divider';
 import { CR_INFO } from 'shared/constants';
@@ -8,10 +8,11 @@ import StyledMonsterInfoModal from './MonsterInfoModal.styled';
 
 interface Props {
   monster: Monster;
-  intl: InjectedIntl;
 }
 
-const MonsterInfoModal: React.FC<Props> = ({ monster, intl: { formatMessage } }) => {
+const MonsterInfoModal: React.FC<Props> = ({ monster }) => {
+  const { formatMessage } = useIntl();
+
   const translatedType = React.useMemo(
     () => formatMessage({ id: `monster.types.${monster.type}` }),
     [formatMessage, monster.type]
@@ -375,4 +376,4 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
   );
 };
 
-export default injectIntl(MonsterInfoModal);
+export default MonsterInfoModal;

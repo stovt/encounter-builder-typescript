@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import Select from 'react-select';
 import { MonsterState } from 'shared/types/monsters';
 import { useSetMonsterStateDispatch } from 'pages/EncounterBattle/EncounterBattle.actions';
@@ -10,11 +10,12 @@ import MultiValueLabel from './MultiValueLabel';
 interface Props {
   value: MonsterState;
   rowID: string;
-  intl: InjectedIntl;
 }
 
-const StateMultiSelect: React.FC<Props> = ({ value, rowID, intl: { formatMessage } }) => {
+const StateMultiSelect: React.FC<Props> = ({ value, rowID }) => {
   const setMonsterState = useSetMonsterStateDispatch();
+
+  const { formatMessage } = useIntl();
 
   const handleOnChange = React.useCallback(
     (val: MonsterState) => {
@@ -47,4 +48,4 @@ const StateMultiSelect: React.FC<Props> = ({ value, rowID, intl: { formatMessage
   );
 };
 
-export default injectIntl(StateMultiSelect);
+export default StateMultiSelect;

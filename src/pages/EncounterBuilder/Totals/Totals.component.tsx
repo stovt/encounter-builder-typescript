@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { injectIntl, FormattedMessage, InjectedIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Groups, PartyLevels } from 'shared/types/encounterBuilder';
 import {
   getTotalExp,
@@ -14,10 +14,11 @@ import StyledTotals from './Totals.styled';
 interface Props {
   groups: Groups;
   partyLevels: PartyLevels;
-  intl: InjectedIntl;
 }
 
-const Totals: React.FC<Props> = ({ groups, partyLevels, intl }) => {
+const Totals: React.FC<Props> = ({ groups, partyLevels }) => {
+  const { formatMessage } = useIntl();
+
   const totalPlayerCount = React.useMemo(() => getTotalPlayerCount(partyLevels), [partyLevels]);
 
   const totalExp = React.useMemo(() => getTotalExp(groups), [groups]);
@@ -40,11 +41,11 @@ const Totals: React.FC<Props> = ({ groups, partyLevels, intl }) => {
   const difficulty = React.useMemo(() => {
     const d = getDifficulty(groups, partyLevels);
     return d
-      ? intl.formatMessage({
+      ? formatMessage({
           id: `group-info.party-levels.${d}`
         })
       : '';
-  }, [groups, intl, partyLevels]);
+  }, [formatMessage, groups, partyLevels]);
 
   return (
     <StyledTotals>
@@ -75,4 +76,4 @@ const Totals: React.FC<Props> = ({ groups, partyLevels, intl }) => {
   );
 };
 
-export default injectIntl(Totals);
+export default Totals;

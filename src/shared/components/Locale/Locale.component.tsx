@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import localeRu from 'react-intl/locale-data/ru';
+import { IntlProvider } from 'react-intl';
 import ru from 'public/data/locales/ru.json';
 import { flattenMessages } from './Locale.helpers';
 import { DEFAULT_LOCALE } from './Locale.constants';
-
-addLocaleData([...localeRu]);
 
 const locales: Record<string, {}> = { ru };
 

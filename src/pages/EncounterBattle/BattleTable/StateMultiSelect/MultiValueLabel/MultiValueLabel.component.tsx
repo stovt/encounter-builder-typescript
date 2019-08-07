@@ -1,19 +1,18 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { StatefulToolTip } from 'react-portal-tooltip';
 import { components } from 'react-select';
 import { MultiValueProps } from 'react-select/src/components/MultiValue';
 import { MonsterStateValue } from 'shared/types/monsters';
 
-interface Props extends MultiValueProps<MonsterStateValue> {
-  intl: InjectedIntl;
-}
+type Props = MultiValueProps<MonsterStateValue>;
 
 const MultiValueLabel: React.FC<Props> = props => {
   const {
-    intl: { formatMessage },
     data: { value }
   } = props;
+
+  const { formatMessage } = useIntl();
 
   const descriptionItemsCount = React.useMemo(
     () => Number(formatMessage({ id: `monster.states.${value}-description-texts-count` })),
@@ -40,4 +39,4 @@ const MultiValueLabel: React.FC<Props> = props => {
   );
 };
 
-export default injectIntl(MultiValueLabel);
+export default MultiValueLabel;
