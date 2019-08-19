@@ -1,6 +1,6 @@
 export const flattenMessages = (
   nestedMessages: Record<string, string | Record<string, string>>,
-  prefix: string = ''
+  prefix = ''
 ): Record<string, string> => {
   return Object.keys(nestedMessages).reduce((messages: Record<string, string>, key) => {
     const value = nestedMessages[key];

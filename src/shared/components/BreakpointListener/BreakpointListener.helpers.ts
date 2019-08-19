@@ -4,7 +4,7 @@ import { MOBILE_BREAKPOINT_NAME } from './BreakpointListener.constants';
 
 export const fromBreakpoints = (
   callback: (breakpoint: Breakpoint) => void,
-  excludeMobileBreakpoint: boolean = true
+  excludeMobileBreakpoint = true
 ): Record<Breakpoint, any> => {
   let keys = Object.keys(theme.flexboxgrid.breakpoints);
   if (excludeMobileBreakpoint) {

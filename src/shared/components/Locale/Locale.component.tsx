@@ -18,7 +18,7 @@ const messages = flattenMessages(locales[locale]);
 
 const Locale: React.FC = ({ children }) => (
   <IntlProvider locale={locale} messages={messages}>
-    <React.Fragment>{children}</React.Fragment>
+    <>{children}</>
   </IntlProvider>
 );
 
