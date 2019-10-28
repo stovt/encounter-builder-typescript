@@ -31,6 +31,37 @@ const OPTIONS = {
   }
 };
 
+const MONSTER_TYPES = [
+  'aberration',
+  'beast',
+  'celestial',
+  'construct',
+  'dragon',
+  'elemental',
+  'fey',
+  'fiend',
+  'giant',
+  'humanoid',
+  'monstrosity',
+  'ooze',
+  'plant',
+  'undead',
+  'swarm',
+  'titan'
+];
+
+const adjustMonsterType = monsterType => {
+  let adjustedMonsterType = monsterType;
+
+  MONSTER_TYPES.forEach(type => {
+    if (monsterType.startsWith(type)) {
+      adjustedMonsterType = type;
+    }
+  });
+
+  return adjustedMonsterType;
+};
+
 const fetchMonsterByID = monsterID =>
   fetch(`${API_CORS_ENDPOINT}${API_ENDPOINT}/monsters/${monsterID}`, OPTIONS)
     .then(result => result.json())
@@ -38,7 +69,7 @@ const fetchMonsterByID = monsterID =>
       const normalizedMonster = {
         ...monster,
         id: slug,
-        type: type.startsWith('swarm') ? 'swarm' : type
+        type: adjustMonsterType(type.toLowerCase())
       };
 
       fs.writeFile(
@@ -73,7 +104,7 @@ const getMonsters = (nextPageUrl = '', monsters = []) => {
         allMonsters.map(monster => ({
           id: monster.slug,
           name: monster.name,
-          type: monster.type.startsWith('swarm') ? 'swarm' : monster.type,
+          type: adjustMonsterType(monster.type.toLowerCase()),
           challenge_rating: monster.challenge_rating,
           size: monster.size,
           hit_points: monster.hit_points
@@ -93,8 +124,11 @@ getMonsters().then(monsters => {
       console.error('Error writing monsters.json file.');
     } else {
       console.log('Monsters successfully parsed!');
+      console.log('Total monsters: ', monsters.length);
     }
   });
 
+  /* We fetch a monster from api, uncomment only for debugging
   monsters.forEach(monster => fetchMonsterByID(monster.id));
+  */
 });
