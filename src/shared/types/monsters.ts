@@ -1,4 +1,4 @@
-export type MonsterSize = 'Tiny' | 'Small' | 'Medium' | 'Large' | 'Huge' | 'Gargantuan';
+export type MonsterSize = 'tiny' | 'small' | 'medium' | 'large' | 'huge' | 'gargantuan';
 export type MonsterCR =
   | '0'
   | '1/8'
@@ -51,11 +51,27 @@ export type MonsterType =
   | 'undead'
   | 'swarm'
   | 'titan';
-export interface MonsterStateValue {
-  label: string;
-  value: string;
+export type MonsterAlignment = 'lg' | 'ln' | 'le' | 'ng' | 'nn' | 'ne' | 'cg' | 'cn' | 'ce';
+export interface MonsterSkills {
+  acrobatics: number;
+  animalHandling: number;
+  arcana: number;
+  athletics: number;
+  deception: number;
+  history: number;
+  insight: number;
+  intimidation: number;
+  investigation: number;
+  medicine: number;
+  nature: number;
+  perception: number;
+  performance: number;
+  persuasion: number;
+  religion: number;
+  sleightOfHand: number;
+  stealth: number;
+  survival: number;
 }
-export type MonsterState = MonsterStateValue[];
 
 export interface MonsterAction {
   name: string;
@@ -70,23 +86,33 @@ export interface MonsterSpeed {
 }
 export type MonsterActions = MonsterAction[];
 
+export interface MonsterStateValue {
+  label: string;
+  value: string;
+}
+export type MonsterState = MonsterStateValue[];
+
 export interface MonsterBase {
   id: string;
   name: string;
   type: MonsterType;
-  challenge_rating: MonsterCR;
+  challengeRating: MonsterCR;
   size: MonsterSize;
-  hit_points: number;
 }
 
 export type MonstersBase = MonsterBase[];
 
 export interface Monster extends MonsterBase {
+  hitPoints: number;
   subtype: string;
-  alignment: string;
-  armor_class: number;
-  armor_desc: string;
-  hit_dice: string;
+  alignment: MonsterAlignment;
+  damageImmunities?: string;
+  damageResistances?: string;
+  conditionImmunities?: string;
+  damageVulnerabilities?: string;
+  armorClass: number;
+  armorDesc: string;
+  hitDice: string;
   speed: MonsterSpeed;
   strength: number;
   dexterity: number;
@@ -94,35 +120,19 @@ export interface Monster extends MonsterBase {
   intelligence: number;
   wisdom: number;
   charisma: number;
-  strength_save: number;
-  dexterity_save: number;
-  constitution_save: number;
-  intelligence_save: number;
-  wisdom_save: number;
-  charisma_save: number;
-  perception: number;
+  strengthSave: number;
+  dexteritySave: number;
+  constitutionSave: number;
+  intelligenceSave: number;
+  wisdomSave: number;
+  charismaSave: number;
   senses: string;
   languages: string;
-  acrobatics: number;
-  animal_handling: number;
-  arcana: number;
-  athletics: number;
-  deception: number;
-  history: number;
-  insight: number;
-  intimidation: number;
-  investigation: number;
-  medicine: number;
-  nature: number;
-  performance: number;
-  persuasion: number;
-  religion: number;
-  sleight_of_hand: number;
-  stealth: number;
-  survival: number;
-  special_abilities: MonsterActions;
+  skills: MonsterSkills;
+  specialAbilities: MonsterActions;
   actions: MonsterActions;
-  legendary_actions: MonsterActions;
+  legendaryActions: MonsterActions;
+  reactions: MonsterActions;
 }
 
 export type Monsters = Monster[];

@@ -15,8 +15,8 @@ const GroupInfo: React.FC<Props> = ({ group: { monster, qty } }) => (
     <div>
       <StyledMonsterName>{monster.name}</StyledMonsterName>
       <StyledMonsterDescription
-        cr={monster.challenge_rating}
-        xp={CR_INFO[monster.challenge_rating].exp}
+        cr={monster.challengeRating}
+        xp={CR_INFO[monster.challengeRating].exp}
       />
     </div>
     <div>

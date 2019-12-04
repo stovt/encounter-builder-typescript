@@ -36,7 +36,7 @@ export const getTotalPartyExpLevels = (partyLevels: PartyLevels): PartyLevelsTyp
 };
 
 export const getTotalExp = (groups: Groups): number =>
-  groups.reduce((acc, group) => acc + CR_INFO[group.monster.challenge_rating].exp * group.qty, 0);
+  groups.reduce((acc, group) => acc + CR_INFO[group.monster.challengeRating].exp * group.qty, 0);
 
 export const getTotalQty = (groups: Groups): number =>
   groups.reduce((acc, group) => acc + group.qty, 0);

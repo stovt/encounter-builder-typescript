@@ -53,7 +53,7 @@ const BattleTable: React.FC<Props> = ({ monsters }) => {
       },
       {
         Header: formatMessage({ id: 'monster.hit-points' }),
-        accessor: 'monster.hit_points',
+        accessor: 'monster.hitPoints',
         Cell: ({ original: { rowID }, value }: { original: any; value: string | number }) => (
           <HPInput rowID={rowID} value={value} />
         ),
@@ -122,12 +122,9 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
         monster: {
           id: row.monster.id,
           name: row.monster.name,
-          // eslint-disable-next-line @typescript-eslint/camelcase
-          hit_points: row.monster.hit_points,
-          // eslint-disable-next-line @typescript-eslint/camelcase
-          armor_class: row.monster.armor_class,
-          // eslint-disable-next-line @typescript-eslint/camelcase
-          armor_desc: row.monster.armor_desc,
+          hitPoints: row.monster.hitPoints,
+          armorClass: row.monster.armorClass,
+          armorDesc: row.monster.armorDesc,
           initiative: row.monster.initiative,
           speed: row.monster.speed,
           state: row.monster.state,

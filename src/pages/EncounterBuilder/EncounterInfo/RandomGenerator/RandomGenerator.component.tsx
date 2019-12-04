@@ -101,7 +101,7 @@ const RandomGenerator: React.FC = () => {
           ];
         }
 
-        availableExp -= currentGroup * CR_INFO[monster.challenge_rating].exp;
+        availableExp -= currentGroup * CR_INFO[monster.challengeRating].exp;
       }
 
       setGroupMonsters(localGroupMonsters);
@@ -130,14 +130,20 @@ const RandomGenerator: React.FC = () => {
     if (!randomGenerated && isAllMonstersLoaded) {
       groupMonsters.forEach(gm => {
         for (let i = 0; i < gm.qty - 1; i += 1) {
-          addMonsterToGroup(gm.id, loadedMonsters.find(m => m.id === gm.id));
+          addMonsterToGroup(
+            gm.id,
+            loadedMonsters.find(m => m.id === gm.id)
+          );
         }
       });
       setRandomGenerated(true);
     } else {
       groupMonsters.forEach(gm => {
         if (!gm.fetched) {
-          addMonsterToGroup(gm.id, loadedMonsters.find(m => m.id === gm.id));
+          addMonsterToGroup(
+            gm.id,
+            loadedMonsters.find(m => m.id === gm.id)
+          );
           setGroupMonsters(gms => [
             ...gms.slice(0, gms.indexOf(gm)),
             { ...gm, fetched: true },

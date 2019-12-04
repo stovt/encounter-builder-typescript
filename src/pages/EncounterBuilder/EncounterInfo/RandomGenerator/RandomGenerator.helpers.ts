@@ -36,7 +36,7 @@ export const getEncounterTemplate = (maxMonsters: number) => {
 };
 
 const getShuffledMonsterList = (crString: string, monsters: MonstersBase) => {
-  const list = monsters.filter(monster => monster.challenge_rating === crString).slice(0);
+  const list = monsters.filter(monster => monster.challengeRating === crString).slice(0);
 
   return shuffle(list) as MonstersBase;
 };

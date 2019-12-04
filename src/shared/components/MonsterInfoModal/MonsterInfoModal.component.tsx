@@ -30,19 +30,18 @@ const MonsterInfoModal: React.FC<Props> = ({ monster }) => {
     formatMessage,
     monster.size
   ]);
-  const description = React.useMemo(() => `${size} ${type}, ${monster.alignment}`, [
-    size,
-    type,
-    monster.alignment
-  ]);
+  const description = React.useMemo(
+    () => `${size} ${type}, ${formatMessage({ id: `monster.alignments.${monster.alignment}` })}`,
+    [size, type, formatMessage, monster.alignment]
+  );
 
   const {
-    strength_save: strengthSave,
-    dexterity_save: dexteritySave,
-    constitution_save: constitutionSave,
-    intelligence_save: intelligenceSave,
-    wisdom_save: wisdomSave,
-    charisma_save: charismaSave
+    strengthSave,
+    dexteritySave,
+    constitutionSave,
+    intelligenceSave,
+    wisdomSave,
+    charismaSave
   } = monster;
 
   const savingThrows = React.useMemo(
@@ -96,7 +95,7 @@ ${
 
   const {
     acrobatics,
-    animal_handling: animalHandling,
+    animalHandling,
     arcana,
     athletics,
     deception,
@@ -110,10 +109,10 @@ ${
     performance,
     persuasion,
     religion,
-    sleight_of_hand: sleightOfHand,
+    sleightOfHand,
     stealth,
     survival
-  } = monster;
+  } = monster.skills;
 
   const skills = React.useMemo(
     () =>
@@ -286,11 +285,11 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
         <b>{description}</b>
       </div>
       <div>
-        <b>{formatMessage({ id: 'monster.armor-class' })}:</b> {monster.armor_class}
+        <b>{formatMessage({ id: 'monster.armor-class' })}:</b> {monster.armorClass}
       </div>
       <div>
-        <b>{formatMessage({ id: 'monster.hit-points' })}:</b> {monster.hit_points} (
-        {monster.hit_dice})
+        <b>{formatMessage({ id: 'monster.hit-points' })}:</b> {monster.hitPoints} ({monster.hitDice}
+        )
       </div>
       <div>
         <b>{formatMessage({ id: 'monster.speed.title' })}:</b> {speed}
@@ -330,13 +329,35 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
         </div>
       )}
       <div>
-        <b>{formatMessage({ id: 'monster.cr' })}:</b> {monster.challenge_rating} (
-        {CR_INFO[monster.challenge_rating].exp} {formatMessage({ id: 'monster.xps' })})
+        <b>{formatMessage({ id: 'monster.cr' })}:</b> {monster.challengeRating} (
+        {CR_INFO[monster.challengeRating].exp} {formatMessage({ id: 'monster.xps' })})
       </div>
-      {monster.special_abilities && (
+      {monster.damageImmunities && (
+        <div>
+          <b>{formatMessage({ id: 'monster.damage-immunities' })}:</b> {monster.damageImmunities}
+        </div>
+      )}
+      {monster.damageResistances && (
+        <div>
+          <b>{formatMessage({ id: 'monster.damage-resistances' })}:</b> {monster.damageResistances}
+        </div>
+      )}
+      {monster.conditionImmunities && (
+        <div>
+          <b>{formatMessage({ id: 'monster.condition-immunities' })}:</b>{' '}
+          {monster.conditionImmunities}
+        </div>
+      )}
+      {monster.damageVulnerabilities && (
+        <div>
+          <b>{formatMessage({ id: 'monster.damage-vulnerabilities' })}:</b>{' '}
+          {monster.damageVulnerabilities}
+        </div>
+      )}
+      {monster.specialAbilities && !!monster.specialAbilities.length && (
         <>
           <Divider />
-          {monster.special_abilities.map(ability => (
+          {monster.specialAbilities.map(ability => (
             <div key={ability.name}>
               <b>{ability.name}. </b>
               {ability.desc}
@@ -344,7 +365,7 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
           ))}
         </>
       )}
-      {monster.actions && (
+      {monster.actions && !!monster.actions.length && (
         <>
           <Divider />
           <div>
@@ -358,13 +379,27 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
           ))}
         </>
       )}
-      {monster.legendary_actions && (
+      {monster.legendaryActions && !!monster.legendaryActions.length && (
         <>
           <Divider />
           <div>
             <b>{formatMessage({ id: 'monster.legendary-actions' })}</b>
           </div>
-          {monster.legendary_actions.map(action => (
+          {monster.legendaryActions.map(action => (
+            <div key={action.name}>
+              <b>{action.name}. </b>
+              {action.desc}
+            </div>
+          ))}
+        </>
+      )}
+      {monster.reactions && !!monster.reactions.length && (
+        <>
+          <Divider />
+          <div>
+            <b>{formatMessage({ id: 'monster.reactions' })}</b>
+          </div>
+          {monster.reactions.map(action => (
             <div key={action.name}>
               <b>{action.name}. </b>
               {action.desc}

@@ -101,13 +101,15 @@ const encounterBattleReducer = (
         return {
           ...state,
           monsters: [
-            ...state.monsters.slice(0, state.monsters.findIndex(m => m.rowID === rowID)),
+            ...state.monsters.slice(
+              0,
+              state.monsters.findIndex(m => m.rowID === rowID)
+            ),
             {
               rowID,
               monster: {
                 ...monsterData.monster,
-                // eslint-disable-next-line @typescript-eslint/camelcase
-                hit_points: hp
+                hitPoints: hp
               }
             },
             ...state.monsters.slice(state.monsters.findIndex(m => m.rowID === rowID) + 1)
@@ -125,7 +127,10 @@ const encounterBattleReducer = (
         return {
           ...state,
           monsters: [
-            ...state.monsters.slice(0, state.monsters.findIndex(m => m.rowID === rowID)),
+            ...state.monsters.slice(
+              0,
+              state.monsters.findIndex(m => m.rowID === rowID)
+            ),
             {
               rowID,
               monster: {

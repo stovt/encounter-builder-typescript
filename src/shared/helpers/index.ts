@@ -4,6 +4,7 @@ export const numberWithCommas = (number: number) => {
   return parts.join('.');
 };
 
+// eslint-disable-next-line  @typescript-eslint/no-empty-function
 export const noop = () => {};
 
 export const isIE = (() => {
@@ -31,7 +32,7 @@ export const scrollbarWidth = (function getScrollbarWidth() {
   const widthWithScroll = inner.offsetWidth;
 
   // remove divs
-  (outer.parentNode as (Node & ParentNode)).removeChild(outer);
+  (outer.parentNode as Node & ParentNode).removeChild(outer);
 
   return widthNoScroll - widthWithScroll;
 })();

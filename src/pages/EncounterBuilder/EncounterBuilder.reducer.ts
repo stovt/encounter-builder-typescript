@@ -106,7 +106,10 @@ const encounterBuilderReducer = (
       return {
         ...state,
         partyLevels: [
-          ...state.partyLevels.slice(0, state.partyLevels.findIndex(p => p.id === id)),
+          ...state.partyLevels.slice(
+            0,
+            state.partyLevels.findIndex(p => p.id === id)
+          ),
           ...state.partyLevels.slice(state.partyLevels.findIndex(p => p.id === id) + 1)
         ]
       };
@@ -116,7 +119,10 @@ const encounterBuilderReducer = (
       return {
         ...state,
         partyLevels: [
-          ...state.partyLevels.slice(0, state.partyLevels.findIndex(p => p.id === id)),
+          ...state.partyLevels.slice(
+            0,
+            state.partyLevels.findIndex(p => p.id === id)
+          ),
           {
             id,
             level: PLAYER_LEVELS[value],
@@ -132,7 +138,10 @@ const encounterBuilderReducer = (
       return {
         ...state,
         partyLevels: [
-          ...state.partyLevels.slice(0, state.partyLevels.findIndex(p => p.id === id)),
+          ...state.partyLevels.slice(
+            0,
+            state.partyLevels.findIndex(p => p.id === id)
+          ),
           {
             id,
             level: state.partyLevels[state.partyLevels.findIndex(p => p.id === id)].level,

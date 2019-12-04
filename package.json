@@ -12,8 +12,7 @@
     "lint:styles": "stylelint './src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint:js --fix",
     "type-check": "tsc --noEmit",
-    "cache:clear": "rimraf .cache",
-    "parse-monsters": "node scripts/parseMonsters.js"
+    "cache:clear": "rimraf .cache"
   },
   "husky": {
     "hooks": {
@@ -34,7 +33,7 @@
     "react-router-dom": "^5.0.1",
     "react-select": "3.0.8",
     "react-styled-flexboxgrid": "^3.1.0",
-    "react-table": "^6.10.0",
+    "react-table": "6.10.2",
     "redux": "^4.0.1",
     "redux-form": "^8.2.3",
     "redux-saga": "^1.0.2",

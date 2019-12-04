@@ -39,7 +39,7 @@ export const CR_VALUES_STR: string[] = [
   '30'
 ];
 export const CR_VALUES_NUMB: number[] = CR_VALUES_STR.map(cr => CR_INFO[cr].numeric);
-export const SIZES: string[] = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
+export const SIZES: string[] = ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan'];
 export const TYPES: string[] = [
   'aberration',
   'beast',

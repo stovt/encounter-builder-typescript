@@ -110,13 +110,13 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels }) => {
       },
       {
         Header: formatMessage({ id: 'monster.cr' }),
-        accessor: 'challenge_rating',
+        accessor: 'challengeRating',
         getProps: (state: any, rowInfo: any): any => {
           if (!rowInfo) return {};
           return {
             className: getDangerZoneClass(
               partyLevels,
-              CR_INFO[rowInfo.original.challenge_rating].exp
+              CR_INFO[rowInfo.original.challengeRating].exp
             )
           };
         },

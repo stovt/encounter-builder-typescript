@@ -1,6 +1,5 @@
 import { AnyAction } from 'redux';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import monstersData from 'public/data/monsters/monsters.json';
 import config from 'config';
 import { MonstersBase, Monster } from 'shared/types/monsters';
 import { addMonsterToBattleTable } from 'pages/EncounterBattle/EncounterBattle.actions';
@@ -15,9 +14,18 @@ import {
   addMonsterToGroupSuccess
 } from './EncounterBuilder.actions';
 
-const { API_CORS_ENDPOINT, API_ENDPOINT } = config;
+const { API_ENDPOINT } = config;
 
-const fetchAllMonsters = () => monstersData;
+const FETCH_OPTIONS = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  }
+};
+
+const fetchAllMonsters = () =>
+  fetch(`${API_ENDPOINT}/monster`, FETCH_OPTIONS).then(result => result.json());
 
 export function* getMonsters() {
   try {
@@ -28,23 +36,10 @@ export function* getMonsters() {
   }
 }
 
-const fetchMonsterByID = (monsterID: string) => {
-  const FETCH_OPTIONS = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest'
-    }
-  };
-
-  return fetch(`${API_CORS_ENDPOINT}${API_ENDPOINT}/monsters/${monsterID}`, FETCH_OPTIONS)
-    .then(result => result.json())
-    .then(({ slug, type, ...monster }) => ({
-      ...monster,
-      id: slug,
-      type: type.startsWith('swarm') ? 'swarm' : type
-    }));
-};
+const fetchMonsterByID = (monsterID: string) =>
+  fetch(`${API_ENDPOINT}/monster?action=single&id=${monsterID}`, FETCH_OPTIONS).then(result =>
+    result.json()
+  );
 
 export function* getMonsterByID({ monsterID }: AnyAction) {
   try {
