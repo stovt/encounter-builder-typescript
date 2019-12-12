@@ -35,7 +35,8 @@ module.exports =  {
     'react/no-array-index-key': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'import/extensions': 'off'
   },
   env: {
     browser: true,
