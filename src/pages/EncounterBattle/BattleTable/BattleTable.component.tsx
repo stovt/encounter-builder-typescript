@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useIntl } from 'react-intl';
 import ReactTable from 'react-table';
 import { MonsterActions, BattleMonsterRows, MonsterSpeed } from 'shared/types/monsters';
+import useBreakpoints from 'shared/hooks/useBreakpoints';
 import { MONSTER_INFO_MODAL_ID } from 'shared/components/MonsterInfoModal/MonsterInfoModal.constants';
 import { useShowModalDispatch } from 'shared/components/Modal/Modal.actions';
 import { useTurnSelector } from '../EncounterBattle.selectors';
@@ -18,6 +19,9 @@ const BattleTable: React.FC<Props> = ({ monsters }) => {
   const turn = useTurnSelector();
 
   const { formatMessage } = useIntl();
+
+  const breakpoints = useBreakpoints();
+  console.log('TCL: breakpoints', breakpoints);
 
   const handleTrProps = React.useCallback(
     (state: any, { index }: any) => ({
@@ -46,7 +50,7 @@ const BattleTable: React.FC<Props> = ({ monsters }) => {
       {
         Header: formatMessage({ id: 'monster.name' }),
         accessor: 'monster.name',
-        width: 250,
+        width: 150,
         style: {
           cursor: 'pointer'
         }
@@ -61,19 +65,29 @@ const BattleTable: React.FC<Props> = ({ monsters }) => {
         style: { justifyContent: 'center' }
       },
       {
-        Header: `${formatMessage({ id: 'monster.armor' })} (${formatMessage({
-          id: 'monster.armor-class'
-        })})`,
+        Header: breakpoints.lg
+          ? formatMessage({ id: 'monster.armor' })
+          : `${formatMessage({ id: 'monster.armor' }).slice(0, 4)}...`,
         accessor: 'monster',
-        Cell: ({ value }: { value: any }) =>
-          value.armor_desc ? `${value.armor_desc} (${value.armor_class})` : value.armor_class,
-        width: 160
+        Cell: ({ value }: { value: any }) => {
+          if (breakpoints.lg) {
+            if (value.armorDesc) {
+              return `${value.armorDesc} (${value.armorClass})`;
+            }
+            return value.armorClass;
+          }
+          return value.armorClass;
+        },
+        style: { justifyContent: 'center' },
+        width: breakpoints.lg ? 130 : 70
       },
       {
-        Header: formatMessage({ id: 'monster.initiative' }),
+        Header: breakpoints.lg
+          ? formatMessage({ id: 'monster.initiative' })
+          : `${formatMessage({ id: 'monster.initiative' }).slice(0, 4)}...`,
         accessor: 'monster.initiative',
         style: { justifyContent: 'center' },
-        width: 120
+        width: breakpoints.lg ? 100 : 70
       },
       {
         Header: formatMessage({ id: 'monster.speed.title' }),
@@ -90,7 +104,7 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
 
           return speed;
         },
-        width: 160
+        width: 120
       },
       {
         Header: formatMessage({ id: 'monster.state' }),
@@ -100,19 +114,23 @@ ${climb ? `${formatMessage({ id: 'monster.speed.climb' }, { speed: climb })}, ` 
         ),
         width: 240
       },
-      {
-        Header: formatMessage({ id: 'monster.actions' }),
-        accessor: 'monster.actions',
-        Cell: ({ value }: { value: MonsterActions }) =>
-          value.map(action => (
-            <span key={action.name}>
-              <b>{action.name}.</b> {action.desc}
-            </span>
-          )),
-        style: { flexDirection: 'column', alignItems: 'normal' }
-      }
+      ...(breakpoints.md
+        ? [
+            {
+              Header: formatMessage({ id: 'monster.actions' }),
+              accessor: 'monster.actions',
+              Cell: ({ value }: { value: MonsterActions }) =>
+                value.map(action => (
+                  <span key={action.name}>
+                    <b>{action.name}.</b> {action.desc}
+                  </span>
+                )),
+              style: { flexDirection: 'column', alignItems: 'normal' }
+            }
+          ]
+        : [])
     ],
-    [formatMessage]
+    [breakpoints.lg, breakpoints.md, formatMessage]
   );
 
   const tableData = React.useMemo(
