@@ -36,7 +36,16 @@ module.exports =  {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-props-no-spreading': 'off',
-    'import/extensions': 'off'
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        'js': 'never',
+        'jsx': 'never',
+        'ts': 'never',
+        'tsx': 'never'
+      }
+    ]
   },
   env: {
     browser: true,
