@@ -1,3 +1,4 @@
 module.exports = {
-  'src/**/*.{ts,tsx}': ['prettier --write', 'yarn lint:fix', 'git add']
+  '*.{js,jsx,ts,tsx,json,md}': ['yarn format'],
+  'src/**/*.{ts,tsx}': ['yarn lint:fix']
 };
