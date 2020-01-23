@@ -1,5 +1,5 @@
-module.exports =  {
-  parser:  '@typescript-eslint/parser',
+module.exports = {
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -8,14 +8,14 @@ module.exports =  {
     sourceType: 'module'
   },
   plugins: ['@typescript-eslint', 'import', 'react-hooks'],
-  extends:  [
+  extends: [
     'airbnb',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended'
   ],
   rules: {
-    'indent': 'off',
+    indent: 'off',
     '@typescript-eslint/indent': ['off'],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
@@ -40,10 +40,10 @@ module.exports =  {
       'error',
       'ignorePackages',
       {
-        'js': 'never',
-        'jsx': 'never',
-        'ts': 'never',
-        'tsx': 'never'
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
       }
     ]
   },
@@ -62,7 +62,7 @@ module.exports =  {
   ],
   settings: {
     'import/resolver': {
-      'typescript': {},
+      typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
@@ -70,5 +70,5 @@ module.exports =  {
     react: {
       version: 'detect'
     }
-  },
+  }
 };
