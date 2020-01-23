@@ -33,5 +33,15 @@ node_modules/
 # Optional eslint cache
 .eslintcache
 
+# Mac files
+.DS_Store
+
+# Yarn
+yarn-error.log
+.pnp/
+.pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# dotenv environment variable files
+.env*
