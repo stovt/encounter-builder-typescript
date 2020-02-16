@@ -8,7 +8,7 @@ export default styled.h2<{ center?: boolean }>`
   margin: 0;
   margin-bottom: ${props => props.theme.margins.large};
   font-size: ${props => props.theme.fontSize.title};
-  font-weight: normal;
+  font-weight: 900;
   line-height: 1;
   ${props => props.center && centerStyles}
 `;

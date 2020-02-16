@@ -23,55 +23,57 @@ const Party: React.FC<Props> = ({ partyLevels }) => {
 
   return (
     <>
-      <StyledPartyWrapper>
-        <StyledParty>
-          <StyledPartyItem>
-            <b>
-              <FormattedMessage id='group-info.players' />:
-            </b>
-          </StyledPartyItem>
-          {partyLevels.map(partyLevel => (
-            <StyledPartyItem key={partyLevel.id}>
-              <Select
-                onChange={setPartyPlayerCount}
-                value={partyLevel.playerCount}
-                maxValue={MAX_PLAYER_COUNT}
-                id={partyLevel.id}
-              />
+      <div>
+        <StyledPartyWrapper>
+          <StyledParty>
+            <StyledPartyItem>
+              <b>
+                <FormattedMessage id='group-info.players' />:
+              </b>
             </StyledPartyItem>
-          ))}
-        </StyledParty>
-        <StyledParty>
-          <StyledPartyItem>
-            <b>
-              <FormattedMessage id='group-info.level' />:
-            </b>
-          </StyledPartyItem>
-          {partyLevels.map(partyLevel => (
-            <StyledPartyItem key={partyLevel.id}>
-              <Select
-                onChange={setPartyLevel}
-                value={partyLevel.level.level}
-                maxValue={MAX_LEVEL}
-                id={partyLevel.id}
-              />
-            </StyledPartyItem>
-          ))}
-        </StyledParty>
-        <StyledParty>
-          <StyledPartyItem>&nbsp;</StyledPartyItem>
-          {partyLevels.map((partyLevel, index) =>
-            index ? (
+            {partyLevels.map(partyLevel => (
               <StyledPartyItem key={partyLevel.id}>
-                <RemovePartyLevelButton id={partyLevel.id} />
+                <Select
+                  onChange={setPartyPlayerCount}
+                  value={partyLevel.playerCount}
+                  maxValue={MAX_PLAYER_COUNT}
+                  id={partyLevel.id}
+                />
               </StyledPartyItem>
-            ) : (
-              <StyledPartyItem key={partyLevel.id} />
-            )
-          )}
-        </StyledParty>
-      </StyledPartyWrapper>
-      <StyledAddPartyLevelButton onClick={addPartyLevel} />
+            ))}
+          </StyledParty>
+          <StyledParty>
+            <StyledPartyItem>
+              <b>
+                <FormattedMessage id='group-info.level' />:
+              </b>
+            </StyledPartyItem>
+            {partyLevels.map(partyLevel => (
+              <StyledPartyItem key={partyLevel.id}>
+                <Select
+                  onChange={setPartyLevel}
+                  value={partyLevel.level.level}
+                  maxValue={MAX_LEVEL}
+                  id={partyLevel.id}
+                />
+              </StyledPartyItem>
+            ))}
+          </StyledParty>
+          <StyledParty>
+            <StyledPartyItem>&nbsp;</StyledPartyItem>
+            {partyLevels.map((partyLevel, index) =>
+              index ? (
+                <StyledPartyItem key={partyLevel.id}>
+                  <RemovePartyLevelButton id={partyLevel.id} />
+                </StyledPartyItem>
+              ) : (
+                <StyledPartyItem key={partyLevel.id} />
+              )
+            )}
+          </StyledParty>
+        </StyledPartyWrapper>
+        <StyledAddPartyLevelButton onClick={addPartyLevel} />
+      </div>
     </>
   );
 };

@@ -12,13 +12,13 @@ const GroupInfo: React.FC = () => {
 
   return (
     <StyledGroupInfo>
-      <div>
-        <StyledTitle>
-          <FormattedMessage id='group-info.title' />
-        </StyledTitle>
+      <StyledTitle>
+        <FormattedMessage id='group-info.title' />
+      </StyledTitle>
+      <div className='partyLevelsWrapper'>
         <Party partyLevels={partyLevels} />
+        <TotalPartyLevels partyLevels={partyLevels} groups={groups} />
       </div>
-      <TotalPartyLevels partyLevels={partyLevels} groups={groups} />
     </StyledGroupInfo>
   );
 };

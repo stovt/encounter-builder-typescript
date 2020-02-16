@@ -45,7 +45,7 @@ const EncounterBuilder: React.FC = () => {
 
   return (
     <Row>
-      <Col xs={12} sm={12} md={4}>
+      <Col xs={12} sm={12} md={3} mdOffset={1}>
         <Row>
           <Col xs={12}>
             <GroupInfo />
@@ -89,7 +89,7 @@ const EncounterBuilder: React.FC = () => {
           </>
         )}
       </Col>
-      <Col xs={12} sm={12} md={8}>
+      <Col xs={12} sm={12} md={7}>
         <Row>
           <Col xs={12}>
             <MonstersTable monsters={monsters} partyLevels={partyLevels} />

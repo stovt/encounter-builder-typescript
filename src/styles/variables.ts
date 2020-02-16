@@ -29,13 +29,13 @@ const theme: DefaultTheme = {
       focusShadow: 'rgba(25, 122, 173, 0.5)'
     },
     legend: {
-      trivial: '#fff',
-      group: '#f7dfff',
-      pair: '#d9edf7',
-      easy: '##dff0d8',
-      medium: '#faf2cc',
-      hard: '#f6ce95',
-      deadly: '#eba5a3'
+      trivial: '#CFCDE5',
+      group: '#D3DEF0',
+      pair: '#D9ECFA',
+      easy: '#E3F4FC',
+      medium: '#FFE9CF',
+      hard: '#FBD4D5',
+      deadly: '#F9C5DB'
     }
   },
   margins: {
