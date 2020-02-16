@@ -10,6 +10,7 @@ import {
 import StyledTitle from './Title';
 import StyledSubTitle from './SubTitle';
 import StyledTotals from './Totals.styled';
+import BattleButton from './BattleButton';
 
 interface Props {
   groups: Groups;
@@ -49,29 +50,30 @@ const Totals: React.FC<Props> = ({ groups, partyLevels }) => {
 
   return (
     <StyledTotals>
-      <StyledTitle>
-        <FormattedMessage id='encounter-info.difficulty' values={{ difficulty }} />
-      </StyledTitle>
       <div>
-        <StyledTitle className='text-right'>
+        <StyledTitle>
+          <FormattedMessage id='encounter-info.difficulty' values={{ difficulty }} />
+        </StyledTitle>
+        <StyledTitle>
           <FormattedMessage id='encounter-info.total-xp' values={{ exp: totalExp }} />
         </StyledTitle>
-        <StyledSubTitle className='text-right'>
+        <StyledSubTitle>
           <FormattedMessage
             id='encounter-info.exp-per-player'
             values={{ exp: totalExpPerPlayer }}
           />
         </StyledSubTitle>
-        <StyledTitle className='text-right'>
+        <StyledTitle>
           <FormattedMessage id='encounter-info.adjusted-xp' values={{ exp: adjustedExp }} />
         </StyledTitle>
-        <StyledSubTitle className='text-right'>
+        <StyledSubTitle>
           <FormattedMessage
             id='encounter-info.exp-per-player'
             values={{ exp: adjustedExpPerPlayer }}
           />
         </StyledSubTitle>
       </div>
+      <BattleButton />
     </StyledTotals>
   );
 };

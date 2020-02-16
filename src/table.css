@@ -24,8 +24,8 @@
 
 .ReactTable .rt-thead.-filters input:focus,
 .ReactTable .rt-thead.-filters select:focus {
-  box-shadow: 0 4px 16px 0 rgba(25, 122, 173, .5);
-  border: solid 1px #197aad
+  box-shadow: 0 4px 16px 0 rgba(25, 122, 173, 0.5);
+  border: solid 1px #197aad;
 }
 
 .ReactTable .rt-thead.-filters .rt-th {
@@ -33,10 +33,9 @@
 }
 
 .ReactTable .rt-thead.-header {
-	box-shadow: none;
+  box-shadow: none;
   border-bottom: 1px solid #ddd;
 }
-
 
 .ReactTable .rt-thead .rt-th,
 .ReactTable .rt-thead .rt-td {
@@ -44,7 +43,7 @@
 }
 
 .ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
-	background: '#e4e4e4';
+  background: '#e4e4e4';
 }
 
 .ReactTable .rt-tbody .rt-tr-group {
@@ -77,7 +76,7 @@
 }
 
 .ReactTable .-pagination {
-	box-shadow: none;
+  box-shadow: none;
   border-top: 1px solid #ddd;
 }
 
@@ -95,28 +94,29 @@
 
 .ReactTable .-pagination input:focus,
 .ReactTable .-pagination select:focus {
-  box-shadow: 0 4px 16px 0 rgba(25, 122, 173, .5);
-  border: solid 1px #197aad
+  box-shadow: 0 4px 16px 0 rgba(25, 122, 173, 0.5);
+  border: solid 1px #197aad;
 }
 
 .ReactTable .-pagination .-btn {
-  height: 100%;  
+  height: 100%;
   outline: none;
   padding: 10px 32px;
+  font-size: 1rem;
+  font-weight: 400;
   border-radius: 4px;
-  border: 1px solid transparent;
-  box-shadow: 0 4px 8px 0 rgba(60, 18, 6, .16);
-  background: linear-gradient(79deg, #da3319, #eb4930);
-  color: #fff;
+  border: 1px solid #dde3e8;
+  background: #f3f3f3;
+  color: #909090;
 }
 
 .ReactTable .-pagination .-btn[disabled] {
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .ReactTable .-pagination .-btn:not([disabled]):hover {
-  background: linear-gradient(79deg, #da3319, #eb4930);
-  opacity: .8;
+  background: #f3f3f3;
+  opacity: 0.8;
 }
 
 .ReactTable .-pagination .-pageJump input {

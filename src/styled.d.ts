@@ -16,11 +16,13 @@ declare module 'styled-components' {
       error: string;
       black: string;
       white: string;
+      grey: string;
       link: string;
       hr: string;
       btn: {
         prime1: string;
         prime2: string;
+        prime3: string;
         shadow: string;
       };
       input: {

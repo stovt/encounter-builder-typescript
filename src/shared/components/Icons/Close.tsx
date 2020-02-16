@@ -10,7 +10,7 @@ const Close: React.FC<Props> = ({ width = 12, height = 12 }) => (
     <path
       fill='none'
       fillRule='evenodd'
-      stroke='#000'
+      stroke='#929292'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.25'

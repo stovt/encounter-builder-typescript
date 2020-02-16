@@ -14,11 +14,13 @@ const theme: DefaultTheme = {
     error: '#d0021b',
     black: '#000',
     white: '#fff',
+    grey: '#505050',
     link: '#00448b',
     hr: '#ddd',
     btn: {
       prime1: '#da3319',
       prime2: '#eb4930',
+      prime3: '#f3f3f3',
       shadow: 'rgba(60, 18, 6, 0.16)'
     },
     input: {
