@@ -5,7 +5,7 @@ const ChevronDown: React.FC = () => (
     <path
       fill='none'
       fillRule='evenodd'
-      stroke='#fff'
+      stroke='#929292'
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth='1.25'

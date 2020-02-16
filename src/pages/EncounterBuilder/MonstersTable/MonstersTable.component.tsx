@@ -106,6 +106,7 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels }) => {
       },
       {
         Header: formatMessage({ id: 'monster.name' }),
+        style: { paddingLeft: '10px' },
         accessor: 'name'
       },
       {
@@ -129,6 +130,7 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels }) => {
       },
       {
         Header: formatMessage({ id: 'monster.size' }),
+        style: { paddingLeft: '10px' },
         accessor: 'size',
         width: 140,
         Cell: ({ value }: { value: string }) => formatMessage({ id: `monster.sizes.${value}` }),
@@ -138,6 +140,7 @@ const MonstersTable: React.FC<Props> = ({ monsters, partyLevels }) => {
       },
       {
         Header: formatMessage({ id: 'monster.type' }),
+        style: { paddingLeft: '10px' },
         accessor: 'type',
         minWidth: 130,
         Cell: typeRenderer,

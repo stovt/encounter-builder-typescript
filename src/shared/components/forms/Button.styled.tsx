@@ -5,6 +5,17 @@ export const bigBtnStyles = css`
   padding: 10px;
 `;
 
+export const mainBtnStyles = css`
+  font-size: 20px;
+  padding: 10px;
+  background: linear-gradient(79deg, #c32e16, #e93519);
+  padding: 20px 32px;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(60, 18, 6, 0.16);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+`;
+
 export default styled.button`
   display: block;
   font-size: 1em;
@@ -14,12 +25,10 @@ export default styled.button`
   padding: ${props => props.theme.paddings.small};
   border-radius: 4px;
   border: 1px solid transparent;
-  box-shadow: 0 4px 8px 0 ${props => props.theme.colors.btn.shadow};
 
   /* stylelint-disable-next-line declaration-colon-newline-after */
-  background: ${props =>
-    `linear-gradient(79deg, ${props.theme.colors.btn.prime1}, ${props.theme.colors.btn.prime2})`};
-  color: ${props => props.theme.colors.white};
+  background: ${props => `${props.theme.colors.btn.prime3}`};
+  color: ${props => props.theme.colors.grey};
 
   &:hover {
     opacity: 0.8;

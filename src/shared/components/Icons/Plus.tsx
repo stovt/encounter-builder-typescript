@@ -9,7 +9,7 @@ const Plus: React.FC<Props> = ({ size = 16 }) => (
     <path
       fill='none'
       fillRule='evenodd'
-      stroke='#fff'
+      stroke='#929292'
       strokeLinejoin='round'
       strokeWidth='1.25'
       d='M8 8H1h7V1v7zm0 0v7-7h7-7z'

@@ -10,7 +10,6 @@ import EncounterInfo from './EncounterInfo';
 import Totals from './Totals';
 import Legend from './Legend';
 import MonstersTable from './MonstersTable';
-import BattleButton from './BattleButton';
 import sagas from './EncounterBuilder.sagas';
 import { useFetchAllMonstersDispatch } from './EncounterBuilder.actions';
 import {
@@ -74,7 +73,6 @@ const EncounterBuilder: React.FC = () => {
             <Row>
               <Col xs={12}>
                 <Totals groups={groups} partyLevels={partyLevels} />
-                <BattleButton />
               </Col>
             </Row>
           </>
