@@ -7,7 +7,6 @@ export const bigBtnStyles = css`
 
 export const mainBtnStyles = css`
   font-size: 20px;
-  padding: 10px;
   background: linear-gradient(79deg, #c32e16, #e93519);
   padding: 20px 32px;
   color: rgb(255, 255, 255);
