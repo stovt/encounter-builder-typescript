@@ -1,5 +1,1 @@
-import { useBreakpointsSelector } from 'shared/components/BreakpointListener/BreakpointListener.selectors';
-
-const useBreakpoints = useBreakpointsSelector;
-
-export default useBreakpoints;
+export { useBreakpointsSelector as default } from 'shared/components/BreakpointListener/BreakpointListener.selectors';
