@@ -46,65 +46,69 @@ const EncounterBuilder: React.FC = () => {
   return (
     <Row>
       <Col xs={12} sm={12} md={3} mdOffset={1}>
-        <Row>
-          <Col xs={12}>
-            <GroupInfo />
-          </Col>
-        </Row>
-        <Divider />
-        <Row>
-          <Col xs={12}>
-            <EncounterInfo />
-          </Col>
-        </Row>
-        {monsterLoading && (
-          <>
-            <Divider />
-            <Row>
-              <Col xs={12}>
-                <LoadingComponent />
-              </Col>
-            </Row>
-          </>
-        )}
-        {!!groups.length && !monsterLoading && (
-          <>
-            <Divider />
-            <Row>
-              <Col xs={12}>
-                <Totals groups={groups} partyLevels={partyLevels} />
-              </Col>
-            </Row>
-          </>
-        )}
-        {(breakpoints.xs || (breakpoints.sm && !breakpoints.md)) && <Divider />}
-        {breakpoints.md && (
-          <>
-            <Divider />
-            <Row>
-              <Col xs={12}>
-                <Legend />
-              </Col>
-            </Row>
-          </>
-        )}
+        <div className='containerWrapper'>
+          <Row>
+            <Col xs={12}>
+              <GroupInfo />
+            </Col>
+          </Row>
+          <Divider />
+          <Row>
+            <Col xs={12}>
+              <EncounterInfo />
+            </Col>
+          </Row>
+          {monsterLoading && (
+            <>
+              <Divider />
+              <Row>
+                <Col xs={12}>
+                  <LoadingComponent />
+                </Col>
+              </Row>
+            </>
+          )}
+          {!!groups.length && !monsterLoading && (
+            <>
+              <Divider />
+              <Row>
+                <Col xs={12}>
+                  <Totals groups={groups} partyLevels={partyLevels} />
+                </Col>
+              </Row>
+            </>
+          )}
+          {(breakpoints.xs || (breakpoints.sm && !breakpoints.md)) && <Divider />}
+          {breakpoints.md && (
+            <>
+              <Divider />
+              <Row>
+                <Col xs={12}>
+                  <Legend />
+                </Col>
+              </Row>
+            </>
+          )}
+        </div>
       </Col>
       <Col xs={12} sm={12} md={7}>
-        <Row>
-          <Col xs={12}>
-            <MonstersTable monsters={monsters} partyLevels={partyLevels} />
-            {(breakpoints.xs || (breakpoints.sm && !breakpoints.md)) && (
-              <>
-                <Divider />
-                <Row>
-                  <Col xs={12}>
-                    <Legend />
-                  </Col>
-                </Row>
-              </>
-            )}
-          </Col>
-        </Row>
+        <div className='containerWrapper'>
+          <Row>
+            <Col xs={12}>
+              <MonstersTable monsters={monsters} partyLevels={partyLevels} />
+              {(breakpoints.xs || (breakpoints.sm && !breakpoints.md)) && (
+                <>
+                  <Divider />
+                  <Row>
+                    <Col xs={12}>
+                      <Legend />
+                    </Col>
+                  </Row>
+                </>
+              )}
+            </Col>
+          </Row>
+        </div>
       </Col>
     </Row>
   );
