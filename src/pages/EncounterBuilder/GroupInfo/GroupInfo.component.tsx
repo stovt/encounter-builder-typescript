@@ -15,7 +15,7 @@ const GroupInfo: React.FC = () => {
       <StyledTitle>
         <FormattedMessage id='group-info.title' />
       </StyledTitle>
-      <div className='partyLevelsWrapper'>
+      <div>
         <Party partyLevels={partyLevels} />
         <TotalPartyLevels partyLevels={partyLevels} groups={groups} />
       </div>

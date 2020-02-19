@@ -10,6 +10,7 @@ import EncounterInfo from './EncounterInfo';
 import Totals from './Totals';
 import Legend from './Legend';
 import MonstersTable from './MonstersTable';
+import ColWrapper from './ColWrapper';
 import sagas from './EncounterBuilder.sagas';
 import { useFetchAllMonstersDispatch } from './EncounterBuilder.actions';
 import {
@@ -46,7 +47,7 @@ const EncounterBuilder: React.FC = () => {
   return (
     <Row>
       <Col xs={12} sm={12} md={3} mdOffset={1}>
-        <div className='containerWrapper'>
+        <ColWrapper>
           <Row>
             <Col xs={12}>
               <GroupInfo />
@@ -89,10 +90,10 @@ const EncounterBuilder: React.FC = () => {
               </Row>
             </>
           )}
-        </div>
+        </ColWrapper>
       </Col>
       <Col xs={12} sm={12} md={7}>
-        <div className='containerWrapper'>
+        <ColWrapper>
           <Row>
             <Col xs={12}>
               <MonstersTable monsters={monsters} partyLevels={partyLevels} />
@@ -108,7 +109,7 @@ const EncounterBuilder: React.FC = () => {
               )}
             </Col>
           </Row>
-        </div>
+        </ColWrapper>
       </Col>
     </Row>
   );
