@@ -65,10 +65,10 @@ export type MonsterAlignment =
   | 'ae'
   | 'ac'
   | 'ag'
-  | 'nl'
-  | 'ng'
-  | 'ne'
-  | 'nc';
+  | 'nol'
+  | 'nog'
+  | 'noe'
+  | 'noc';
 export interface MonsterSkills {
   acrobatics: number;
   animalHandling: number;
