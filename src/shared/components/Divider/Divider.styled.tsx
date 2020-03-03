@@ -5,6 +5,5 @@ export default styled.hr`
   color: ${props => props.theme.colors.hr};
   background-color: ${props => props.theme.colors.hr};
   height: 1px;
-  margin-top: 25px;
-  margin-bottom: 20px;
+  margin: ${props => props.theme.margins.large} 0;
 `;

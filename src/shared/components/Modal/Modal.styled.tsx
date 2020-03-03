@@ -32,12 +32,8 @@ const desktopStyles = css<Props>`
   max-height: calc(100vh - 100px);
   margin: auto;
   width: ${props => (props.width ? props.width : '435px')};
+  padding: ${props => (props.padded ? '40px' : 0)};
   ${isIE && ieStyles}
-  ${props =>
-    props.padded &&
-    css`
-      padding: 40px;
-    `}
   ${props => (props.flex ? flexStyles : defaultStyles)}
   ${props => props.cover && coverStyles}
 `;
@@ -49,11 +45,7 @@ const StyledModal = styled.div<Props>`
   box-shadow: 0 4px 24px 0 rgba(104, 135, 226, 0.08), 0 2px 8px 0 rgba(0, 0, 0, 0.04);
   width: 100%;
   min-height: ${props => (props.fullscreenOnMobile ? '100vh' : 0)};
-  ${props =>
-    props.padded &&
-    css`
-      padding: 20px;
-    `}
+  padding: ${props => (props.padded ? props.theme.paddings.large : 0)};
   ${props => props.theme.breakpoints.sm`${desktopStyles}`};
 `;
 

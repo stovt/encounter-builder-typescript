@@ -2,13 +2,13 @@ import styled, { css } from 'styled-components';
 
 export const bigBtnStyles = css`
   font-size: 20px;
-  padding: 10px;
+  padding: ${props => props.theme.paddings.medium};
 `;
 
 export const mainBtnStyles = css`
   font-size: 20px;
   background: linear-gradient(79deg, #c32e16, #e93519);
-  padding: 10px 20px;
+  padding: ${props => props.theme.paddings.medium} ${props => props.theme.paddings.large};
   color: rgb(255, 255, 255);
   box-shadow: 0 4px 8px 0 rgba(60, 18, 6, 0.16);
   text-transform: uppercase;

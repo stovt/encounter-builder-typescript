@@ -27,7 +27,12 @@ const MonsterInfoModalContainer: React.FC = () => {
   }, [modalData.monsterID, monster]);
 
   return (
-    <Modal modalId={MONSTER_INFO_MODAL_ID} title={monster ? monster.name : ''} width='700px'>
+    <Modal
+      modalId={MONSTER_INFO_MODAL_ID}
+      title={monster ? monster.name : ''}
+      width='700px'
+      padded={false}
+    >
       {monsterLoading && <LoadingComponent />}
       {monsterError && <AlertBox>{monsterError}</AlertBox>}
       {monster && <MonsterInfoModal monster={monster} />}
