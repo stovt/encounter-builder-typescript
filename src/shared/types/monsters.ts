@@ -51,7 +51,24 @@ export type MonsterType =
   | 'undead'
   | 'swarm'
   | 'titan';
-export type MonsterAlignment = 'lg' | 'ln' | 'le' | 'ng' | 'nn' | 'ne' | 'cg' | 'cn' | 'ce';
+export type MonsterAlignment =
+  | 'lg'
+  | 'ln'
+  | 'le'
+  | 'ng'
+  | 'nn'
+  | 'ne'
+  | 'cg'
+  | 'cn'
+  | 'ce'
+  | 'al'
+  | 'ae'
+  | 'ac'
+  | 'ag'
+  | 'nol'
+  | 'nog'
+  | 'noe'
+  | 'noc';
 export interface MonsterSkills {
   acrobatics: number;
   animalHandling: number;

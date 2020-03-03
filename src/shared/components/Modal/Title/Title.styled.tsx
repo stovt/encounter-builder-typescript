@@ -9,7 +9,7 @@ const StyledTitle = styled.h5<Props>`
   margin-bottom: ${props => props.theme.margins.large};
   font-size: 24px;
   color: ${props => (props.error ? '#e20000' : props.theme.colors.black)};
-  font-weight: 500;
+  font-weight: 900;
   text-align: center;
 `;
 

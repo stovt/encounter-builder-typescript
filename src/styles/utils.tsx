@@ -10,31 +10,31 @@ const GlobalUtilsStyles = createGlobalStyle`
   }
 
   .legend-trivial {
-    background-color: #fff;
+    background-color: ${props => props.theme.colors.legend.trivial};
   }
 
   .legend-group {
-    background-color: #f7dfff;
+    background-color: ${props => props.theme.colors.legend.group};
   }
 
   .legend-pair {
-    background-color: #d9edf7;
+    background-color: ${props => props.theme.colors.legend.pair};
   }
 
   .legend-easy {
-    background-color: #dff0d8;
+    background-color: ${props => props.theme.colors.legend.easy};
   }
 
   .legend-medium {
-    background-color: #faf2cc;
+    background-color: ${props => props.theme.colors.legend.medium};
   }
 
   .legend-hard {
-    background-color: #f6ce95;
+    background-color: ${props => props.theme.colors.legend.hard};
   }
 
   .legend-deadly {
-    background-color: #eba5a3;
+    background-color: ${props => props.theme.colors.legend.deadly};
   }
 `;
 
