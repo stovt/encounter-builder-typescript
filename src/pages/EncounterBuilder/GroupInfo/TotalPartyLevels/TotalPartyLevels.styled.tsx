@@ -4,7 +4,7 @@ export default styled.ul`
   list-style: none;
   margin: ${props => props.theme.margins.medium};
   margin-right: 0;
-  margin-top: 0px;
+  margin-top: 0;
   padding: 0;
   text-align: right;
 `;
