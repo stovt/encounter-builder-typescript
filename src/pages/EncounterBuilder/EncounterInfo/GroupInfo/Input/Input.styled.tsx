@@ -6,6 +6,7 @@ export default styled.input`
   vertical-align: middle;
   text-align: center;
   width: 40px;
+  height: auto;
 
   &:focus {
     border: solid 1px ${props => props.theme.colors.input.focusBorder};
